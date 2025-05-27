@@ -1,0 +1,58 @@
+.WhoWeAre {
+    background-image: url('../../Assets/WWA/WWABG.png');
+    /* background: #f5f5f5; */
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .WWAheading {
+    font-size: 3rem;
+    color: #d2a06c;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  /* Grid Container */
+  .featuredcards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Individual Card */
+  .cardgrid {
+    background: transparent;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Icon/Image */
+  .WWAimg img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+  
+  /* Card Heading */
+  .cardHead {
+    color: #d2a06c;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Description */
+  .cardDescription {
+    font-size: 20px;
+    color: #202e3c;
+    text-align: center;
+    line-height: 1.5;
+  }
+  

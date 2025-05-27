@@ -1,0 +1,39 @@
+.counter1{
+    margin: 10px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+}
+.counter1 .minus{
+    width: 23px;
+    height: 20px;
+    background-color: #C39970;
+    color: #202E3C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0px 0px 5px;
+    cursor: pointer;
+}
+.counter1 .plus{
+    width: 23px;
+    height: 20px;
+    background-color: #C39970;
+    color: #202E3C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+.counter1 .variable{
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 23px;
+    height: 20px;
+    background-color: #202E3C;
+    color: #C39970;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

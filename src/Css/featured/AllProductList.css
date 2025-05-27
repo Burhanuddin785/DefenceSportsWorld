@@ -1,0 +1,38 @@
+.AllProductList{
+    /* margin: 5%; */
+    margin-top: 3%;
+}
+.AllProductList .title{
+    display: block;
+    font-family: 'Oswald-Light', Helvetica;
+    font-size: 1.5rem;
+    margin-left: 5%;
+}
+.AllProductList .heroimg{
+    margin: 5%;
+    margin-top: 5px;
+}
+.AllProductList .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AllProductList .subcategoryList{
+    margin-top: 2%;
+    margin-bottom: 3%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+
+}
+.CatTitle{
+    text-shadow: none;
+}
+
+.AllProductList .allProducts{
+    margin-bottom: 3%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    
+}

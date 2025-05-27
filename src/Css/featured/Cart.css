@@ -1,0 +1,112 @@
+.cart {
+    margin: 3% 5%;
+}
+
+.topsec {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    /* Stretch to full width */
+    width: 100%;
+}
+
+.topsec .productList {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.productList .title {
+    font-family: 'Oswald-Regular', Helvetica;
+    font-size: 2.5rem;
+    color: #C39970;
+    margin-bottom: 1rem;
+}
+
+.productList .list {
+    display: flex;
+    flex-direction: column;
+}
+
+.productList .list .row {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.productList .list .row .image {
+    height: 150px;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.productList .list .row .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.productList .list .row .deats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.productList .list .row .title {
+    font-family: "Oswald-Light", Helvetica;
+    font-size: 1.75rem;
+    color: #202e3c;
+}
+
+.ETA {
+    font-family: 'Oswald-Light', Helvetica;
+    font-size: 1.25rem;
+}
+
+.row .price {
+    font-family: "Oswald-Regular", Helvetica;
+    font-size: 2.5rem;
+    color: #C39970;
+    margin-left: auto;
+    padding-right: 1rem;
+}
+
+/* Bill section on the right */
+.bill {
+    flex: 1;
+    border-left: 1px solid #ccc;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.billRow {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Oswald-Regular", Helvetica;
+    font-size: 1.2rem;
+    color: #202e3c;
+}
+
+.billRow:last-child {
+    font-weight: bold;
+}
+
+.billRow .billItem:last-child {
+    color: #C39970;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    font-family: "Oswald-Regular", Helvetica;
+    font-size: 1rem;
+    background-color: #202e3c;
+    color: #C39970;
+    border: none;
+    cursor: pointer;
+}

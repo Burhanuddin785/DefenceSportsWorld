@@ -1,0 +1,37 @@
+.SubCategoryCard{
+    padding: 10px;
+    height: 462px;
+    width: 314px;
+    background-image: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.SubCategoryCard .title{
+    font-family: 'Oswald-Medium', Helvetica;
+    display: block;
+    font-size: 2.5rem;
+    color: #E7B88A;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.SubCategoryCard button{
+    height: 35px;
+    width: 117px;
+    background-color: #E7B88A;
+    font-family: 'Oswald-Medium', Helvetica;
+    font-size: 1.5rem;
+    color: #202E3C;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition:  ease-in-out 800;
+}
+.SubCategoryCard:hover{
+    box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.3);
+}

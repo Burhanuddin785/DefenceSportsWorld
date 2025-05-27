@@ -1,0 +1,13 @@
+.box {
+    height: 35px;
+    width: 33px;
+  }
+  
+  .box .vector {
+    height: 35px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 33px;
+  }
+  

@@ -1,0 +1,104 @@
+/* Common Styling */
+.footerHeader, .footerBody {
+    background-color: #202E3C;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Header Section */
+  .footerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .footerHeader .headLine {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    max-width: 40%;
+  }
+  
+  .footerHeader .emailBlock {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+  overflow: hidden;
+  height: 40px;
+  }
+  
+  .footerHeader input[type="text"] {
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    width: 220px;
+    font-size: 14px;
+    background-color: #C39970;
+    color: #000;
+    height: 100%;
+    font-family: 'Oswald', sans-serif;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  
+  .footerHeader button {
+    margin-left: 1px;
+    margin-top: 0;
+    padding: 0 16px;
+    border: none;
+    background-color: #C39970;
+    color: white;
+    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    height: 100%;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  
+  /* Social Icons Block */
+  .footerHeader .socialIcons {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .footerHeader .socialIcons img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    /* filter: brightness(0) saturate(100%) invert(76%) sepia(22%) saturate(575%) hue-rotate(345deg) brightness(89%) contrast(84%); */
+    cursor: pointer;
+  }
+  
+  /* Footer Body */
+  .footerBody {
+    display: flex;
+    justify-content: flex-start;
+    padding: 40px;
+    gap: 100px;
+  }
+  
+  .footerBody .QuickLinks,
+  .footerBody .AboutDSW {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footerBody label {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .footerBody .QuickLinks label:first-child,
+  .footerBody .AboutDSW label:first-child {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  

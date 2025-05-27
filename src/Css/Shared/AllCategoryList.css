@@ -1,0 +1,18 @@
+.CategoryList{
+    margin: 0px 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.CategoryList .CatTitle{
+    margin: 10px 0px;
+    margin-bottom: 20px;
+    text-shadow: none;
+}
+.CategoryList .CatList{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
