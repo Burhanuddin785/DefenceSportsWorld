@@ -21,8 +21,8 @@
     height:100px;
     width: 100px;
 }
-.imageList .image .clicked{
-    border: 2px solid #000;
+.imageList  .clicked{
+    border: 5px solid #C39970;
 }
 .productImage{
     height: 418px;
@@ -96,6 +96,10 @@
     font-family: 'Oswald-Regular', Helvetica;
     font-size: 1.5rem;
     background-color: #C39970;
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
     color: #202E3C;
     margin: 10px;
     box-shadow: none;
