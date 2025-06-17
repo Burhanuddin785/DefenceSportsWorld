@@ -1,0 +1,7 @@
+.Adminheader{
+    height: 120px;
+    width: 100vw;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}

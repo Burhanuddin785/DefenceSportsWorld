@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'Oswald-SemiBold';
+  src: url('../../../Assets/Fonts/Oswald-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Oswald-Light';
+  src: url('../../../Assets/Fonts/Oswald-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.ProductCard {
+    width: 295px;
+    height: 362px;
+    background-color: #202e3c; /* dark navy */
+    color: #ffffff;
+    font-family: 'Oswald-Medium', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin: 10px;
+    margin-left: 2%;
+  }
+  
+  .cardHeader .title {
+    font-family: 'Oswald-SemiBold', Helvetica;
+    font-size: 2.3rem;
+    color: #c39970; /* golden brown */
+    font-weight: 100 !important;
+    
+  }
+  
+  .cardBody {
+    margin: 0px 3%;
+    background-color: white;
+    border: 5px solid #c39970;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .cardBody .image img {
+    margin-top: 0%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .cardFooter {
+    max-height: 175px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .cardFooter .rate {
+    font-family: 'Oswald-Light', Helvetica;
+    margin-left: 2%;
+    color: #c39970; /* ₹XXXX color */
+    font-weight: 500;
+    font-size: 2.7rem;
+  }
+  
+  .cardFooter label {
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+  

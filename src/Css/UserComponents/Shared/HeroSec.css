@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'Oswald-ExtraLight';
+    src: url('../../../Assets/Fonts/Oswald-ExtraLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+main{
+    margin: 0;
+    max-height: 569px;
+    background-color: aqua;
+    padding: 0;
+}
+
+.container{
+    margin: 0;
+    background-image: url('../../../Assets/HeroSection/HeroSecBackDrop.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    max-height: 569px;
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.content{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto 2fr ;
+    gap: 1rem;
+    
+}
+
+.DSW{
+    grid-row: 1;
+    /* margin; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    height: auto;
+    margin: 1%;
+    max-height: 92px;
+    width: auto;
+    /* max-width: 1014px; */
+
+}
+
+.DSW img{
+    max-width: 850px !important;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+.label{
+    grid-row: 2;
+    /* margin; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    height: auto;
+    max-height: 92px;
+    width: auto;
+    /* max-width: 1014px; */
+
+}
+
+.label img{
+    max-width: 830px !important;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+label{
+    font-family: 'Oswald-ExtraLight', Helvetica;
+    font-size: 1.50rem;           /* Around 20px */
+    line-height: 1.6;             /* Good vertical spacing */
+    font-weight: 300;             /* Light but readable */
+    color: #fff;                  /* Bright white text */
+    text-align: center;           /* Centered horizontally */
+    max-width: 700px;             /* Keeps it readable */
+    margin: 0 auto;               /* Center horizontally */
+    letter-spacing: 0.5px;
+}
+
+
+
+.slider{
+    height: 200px;
+    width: 400px;
+    /* color: aqua; */
+}
