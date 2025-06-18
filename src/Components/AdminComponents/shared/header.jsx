@@ -1,16 +1,20 @@
 import React from 'react'
-import '../../../Css/AdminComponents/header.css'
+import { useNavigate } from 'react-router-dom'
 
-const header = () => {
+const Header = () => {
+
+  let navigate = useNavigate();
+
   return (
-    <div className='header'>
+    <div className='Adminheader'>
       <label>Home</label>
+      <label onClick={()=>{navigate('categoryUpload')}}>Category Upload</label>
+      <label onClick={()=>{navigate('categoryList')}}>Category List</label>
       <label>Product Upload</label>
       <label>Product List</label>
       <label>Order List</label>
-      <label>Home</label>
     </div>
   )
 }
 
-export default header
+export default Header

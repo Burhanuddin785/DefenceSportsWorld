@@ -8,20 +8,24 @@ import Cart from '../Components/UserComponents/featured/Cart'
 import UserComponents from '../modules/UserModules'
 import AdminModules from '../modules/AdminModules'
 import AdminHome from '../Components/AdminComponents/featured/Home'
+import CategoryUpload from '../Components/AdminComponents/featured/CategoryUpload'
+import CategoryList from '../Components/AdminComponents/featured/CategoryList'
 
 const AllRoutes = ()=>{
     return (
         <Routes>
             <Route path="" element={<UserComponents/>}>
-            <Route path="" element={<Home/>} />
-            <Route path="/categories" element={<Category/>} />
-            <Route path="/categories/:categoryName" element={<AllProductList/>} />
-            <Route path="/categories/:categoryName/:product" element={<ProductPage/>} />
-            <Route path="/cart" element={<Cart/>} />
+                <Route path="" element={<Home/>} />
+                <Route path="/categories" element={<Category/>} />
+                <Route path="/categories/:categoryName" element={<AllProductList/>} />
+                <Route path="/categories/:categoryName/:product" element={<ProductPage/>} />
+                <Route path="/cart" element={<Cart/>} />
             </Route>
 
             <Route path="maalik" element={<AdminModules/>}>
                 <Route path="" element={<AdminHome/>}/>
+                <Route path="categoryUpload" element={<CategoryUpload/>}/>
+                <Route path="categoryList" element={<CategoryList/>}/>
             </Route>
         </Routes>
     )
