@@ -81,3 +81,21 @@
     align-items: center;
 
 }
+.productUpload{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgBTN{
+margin: 0;
+padding: 0;
+height: 30px;
+width: 30px;
+position: absolute;
+top: 0;
+right: 0;
+color: white;
+border: none;
+cursor: pointer;
+background-color: transparent;
+}

@@ -28,6 +28,11 @@
     height: 418px;
     width: 418px;
     margin: 10px;
+    object-fit: cover;
+}
+.productImage img{
+    height: 100%;
+    width: 100%;
 }
 .heroDetails{
     margin: 10px;

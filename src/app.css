@@ -1,0 +1,6 @@
+.app{
+    position: absolute;
+    z-index: 0;
+    background-image: url('./Assets/bgImage.png');
+    object-fit: contain;
+}
