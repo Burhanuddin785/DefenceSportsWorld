@@ -26,14 +26,14 @@ const CategoryList = () => {
   return (
     <div className='CategoryList'>
       <div>{listData.length === 0 && <button onClick={()=>{navigate('/maalik/categoryUpload')}}>Add Category</button>}</div>
-      <table>
+      <table border="1" cellPadding="10" cellSpacing="0" style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
         <tr>
         <th>Name</th>
         <th>Template Image</th>
         <th>Hero Image</th>
         <th>Tag Line</th>
-        <th>Edit</th>
+        {/* <th>Edit</th> */}
         <th>Delete</th>
         </tr>
         </thead>
@@ -46,7 +46,7 @@ const CategoryList = () => {
                 <td className='tableData'><img className='template' src={`http://localhost:8080/adminUploads/categories/${data.templateImage}`} alt="template"/></td>
                 <td className='tableData'><img className='hero' src={`http://localhost:8080/adminUploads/categories/${data.heroImage}`} alt="hero"/></td>
                 <td className='tableData'>{data.tagLine}</td>
-                <td className='tableData'><button>Edit</button></td>
+                {/* <td className='tableData'><button>Edit</button></td> */}
                 <td className='tableData'><button onClick={()=>{handleDelete(data._id)}}>Delete</button></td>
               </tr>
             )

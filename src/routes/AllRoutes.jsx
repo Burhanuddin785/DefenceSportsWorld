@@ -9,9 +9,9 @@ import UserComponents from '../modules/UserModules'
 import AdminModules from '../modules/AdminModules'
 import AdminHome from '../Components/AdminComponents/featured/Home'
 import CategoryUpload from '../Components/AdminComponents/featured/CategoryUpload'
-import CategoryList from '../Components/AdminComponents/featured/CategoryList'
-import SubCategoryUpload from '../Components/AdminComponents/featured/SubCategoryUpload'
 import ProductUpload from '../Components/AdminComponents/featured/ProductUpload'
+import SubCategoryUpload from '../Components/AdminComponents/featured/SubCategoryUpload'
+import List from '../Components/AdminComponents/featured/List'
 
 const AllRoutes = ()=>{
     return (
@@ -29,7 +29,7 @@ const AllRoutes = ()=>{
                 <Route path="categoryUpload" element={<CategoryUpload/>}/>
                 <Route path="subCategoryUpload" element={<SubCategoryUpload/>}/>
                 <Route path="productUpload" element={<ProductUpload/>}/>
-                <Route path="categoryList" element={<CategoryList/>}/>
+                <Route path="list" element={<List/>}/>
             </Route>
         </Routes>
     )
