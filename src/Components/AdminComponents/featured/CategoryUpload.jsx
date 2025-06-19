@@ -19,6 +19,7 @@ const CategoryUpload = () => {
                 if(!confirm) return;
 
                 const formData = new FormData();
+                formData.append("uploadType", "categories");
                 formData.append("name", values.name);
                 formData.append("templateImage", values.templateImage);
                 formData.append("heroImage", values.heroImage);

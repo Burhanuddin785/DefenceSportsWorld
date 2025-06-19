@@ -10,6 +10,7 @@ import AdminModules from '../modules/AdminModules'
 import AdminHome from '../Components/AdminComponents/featured/Home'
 import CategoryUpload from '../Components/AdminComponents/featured/CategoryUpload'
 import CategoryList from '../Components/AdminComponents/featured/CategoryList'
+import SubCategoryUpload from '../Components/AdminComponents/featured/SubCategoryUpload'
 
 const AllRoutes = ()=>{
     return (
@@ -25,6 +26,7 @@ const AllRoutes = ()=>{
             <Route path="maalik" element={<AdminModules/>}>
                 <Route path="" element={<AdminHome/>}/>
                 <Route path="categoryUpload" element={<CategoryUpload/>}/>
+                <Route path="subCategoryUpload" element={<SubCategoryUpload/>}/>
                 <Route path="categoryList" element={<CategoryList/>}/>
             </Route>
         </Routes>

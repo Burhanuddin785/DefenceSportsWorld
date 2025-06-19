@@ -10,7 +10,7 @@ const Header = () => {
       <label>Home</label>
       <label onClick={()=>{navigate('categoryUpload')}}>Category Upload</label>
       <label onClick={()=>{navigate('categoryList')}}>Category List</label>
-      <label>Product Upload</label>
+      <label onClick={()=>{navigate('subCategoryUpload')}}>Subcategory Upload</label>
       <label>Product List</label>
       <label>Order List</label>
     </div>
