@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/ProductPage.css'
 import Li1 from '../../../Assets/ProductPage/li1.png'
@@ -8,6 +8,9 @@ import FeaturedCategory from '../Shared/FeaturedCategory'
 
 
 const ProductPage = () => {
+useEffect(()=>{
+    window.scrollTo({top: 0, behavior: 'instant'})
+  })
 const shipmentDeats = {Expected_Arrival: "Date", Warrantee: "Years", Description: "Details"}
 const details = {Description: "Details", description: "details",description: "details",description: "details",description: "details",description: "details",description: "details",description: "details"}
 const imageList = [Li1, Li2, Li3]

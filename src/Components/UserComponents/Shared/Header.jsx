@@ -3,12 +3,24 @@ import "../../../Css/UserComponents/Shared/Header.css";
 import vector from "../../../Assets/Vector/Vector.svg";
 import SearchIcon from "../../../Assets/Header/SearchIcon.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import LogIn from "./LogIn";
+
 
  const Header = () => {
-
+  const [showModal, setShowmodal] = useState(false);
+  const [animate , setAnimate] = useState(false);
   let navigate = useNavigate();
+  const handleModal = ()=>{
+    setShowmodal(true);
+    let timer = setTimeout(()=>{
+      setAnimate(true);
+    }, 10)
+    clearTimeout(timer);
+  }
 
   return (
+    <>
     <div className="header">
       <div className="grid-item one">
         <img
@@ -33,10 +45,20 @@ import { useNavigate } from "react-router-dom";
         <div className="text-wrapper" onClick={()=>{navigate('/')}} >Home</div>
         <div className="text-wrapper" onClick={()=>{navigate('/')}}>About</div>
         <div className="text-wrapper">Contacts</div>
-        <div className="text-wrapper">LogIn</div>
+        <div className="text-wrapper" onClick={()=> handleModal()}>LogIn</div>
         <img className="vector" alt="Vector" src={vector} onClick={()=>{navigate('/cart')}} />
         </div>
-      </div>    
+    </div> 
+
+    {showModal && (
+      <div className={`modalOverlay ${animate ? "show" : ""}`} onClick={()=>setShowmodal(false)}>
+        <div className="modalContent" onClick={(e)=>{e.stopPropagation()}} >
+        <LogIn/>
+        {/* <button className="btn" onClick={()=> setShowmodal(false)} >X</button> */}
+        </div>
+      </div>
+    )}
+    </>   
   );
 };
 

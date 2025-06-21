@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/AllProductList.css'
 import HeroIMG from '../../../Assets/AllProducts/heroMagzine.png'
@@ -12,6 +12,9 @@ import ProductCard from '../Shared/ProductCard'
 import FeaturedCategory from '../Shared/FeaturedCategory'
 
 const AllProductList = () => {
+  useEffect(()=>{
+    window.scrollTo({top: 0, behavior: 'instant'})
+  })
 
   let subcategories = [
     {

@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import '../../../Css/UserComponents/featured/Cart.css'
 import Counter from '../Shared/Counter'
 import Scope from '../../../Assets/ProductPage/li1.png'
 
 const Cart = () => {
+    useEffect(()=>{
+        window.scrollTo({top: 0, behavior: 'instant'})
+      })
     const cart = [
         {
             title: "Name",

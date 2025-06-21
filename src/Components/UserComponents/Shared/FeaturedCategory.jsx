@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const FeaturedCategory = ({heading}) => {
-
+  
     
 
     const categoryData = [
@@ -39,7 +39,7 @@ const FeaturedCategory = ({heading}) => {
         {categoryData.map((slide, index)=>(
             
                 <>
-                <CategoryBox key={index} src={slide.imgSrc} title={slide.title} description={slide.description}/>
+                <CategoryBox key={index} onClick={()=>{navigate(`/categories/${slide.title}`)}} src={slide.imgSrc} title={slide.title} description={slide.description}/>
                 </>
             
         ))}
