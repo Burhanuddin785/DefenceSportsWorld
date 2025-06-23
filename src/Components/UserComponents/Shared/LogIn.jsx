@@ -12,7 +12,7 @@ const LogIn = () => {
           <GoogleLogin
             onSuccess={credentialResponse => {
                 setUserData(jwtDecode(credentialResponse.credential));
-                // console.log(userData);
+                console.log(userData);
             }}
             onError={() => {
                 console.log('Login Failed');
