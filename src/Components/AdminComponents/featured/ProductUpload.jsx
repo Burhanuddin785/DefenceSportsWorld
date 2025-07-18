@@ -8,7 +8,7 @@ const ProductUpload = () => {
   const [subCategories, setSubCategories] = useState([])
    useEffect(() => {
     axios.get('http://localhost:8080/api/subcategories')
-      .then(res => setSubCategories(res.data))
+      .then((res) => {setSubCategories(res.data); console.log(res.data)})
       .catch(err => console.error("Error fetching categories", err));
   }, []);
 
@@ -26,7 +26,16 @@ const ProductUpload = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      const confirm = window.confirm("Are you sure you want to add this product?");
+                if(!confirm) return;
+
       const formData = new FormData();
+
+      const selectedSubCategory = subCategories.find(
+     (cat) => cat._id === values.subCategory
+      );
+      const folderName = selectedSubCategory ? selectedSubCategory._id : "default";
+      formData.append("uploadType", folderName);
 
       Object.entries(values).forEach(([key, val]) => {
         if (key === "specifications") {

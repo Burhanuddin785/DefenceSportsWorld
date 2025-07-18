@@ -3,7 +3,7 @@ import React from 'react'
 import '../../../Css/UserComponents/Shared/ProductCard.css'
 import { useNavigate } from 'react-router-dom'
 
-const ProductCard = ({image, title, rate, category}) => {
+const ProductCard = ({image, title, rate, category, subCategory}) => {
 
   const navigate = useNavigate();
   return (
@@ -16,7 +16,7 @@ const ProductCard = ({image, title, rate, category}) => {
         </div>
         <div className="cardFooter">
             <div className="rate">{rate}</div>
-            <label onClick={category ? ()=>{navigate(`/categories/${category}/${title}`)} : ""}>View Details</label>
+            <label onClick={category ? ()=>{navigate(`/categories/${category}/${subCategory}/${title}`)} : ""}>View Details</label>
         </div>
     </div>
   )

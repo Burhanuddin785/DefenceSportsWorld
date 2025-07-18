@@ -12,6 +12,7 @@ import CategoryUpload from '../Components/AdminComponents/featured/CategoryUploa
 import ProductUpload from '../Components/AdminComponents/featured/ProductUpload'
 import SubCategoryUpload from '../Components/AdminComponents/featured/SubCategoryUpload'
 import List from '../Components/AdminComponents/featured/List'
+import SubCategory from '../Components/UserComponents/featured/SubCategory'
 
 const AllRoutes = ()=>{
     return (
@@ -20,7 +21,8 @@ const AllRoutes = ()=>{
                 <Route path="" element={<Home/>} />
                 <Route path="/categories" element={<Category/>} />
                 <Route path="/categories/:categoryName" element={<AllProductList/>} />
-                <Route path="/categories/:categoryName/:product" element={<ProductPage/>} />
+                <Route path="/categories/:categoryName/:subCategoryName" element={<SubCategory/>} />
+                <Route path="/categories/:categoryName/:subCategoryName/:product" element={<ProductPage/>} />
                 <Route path="/cart" element={<Cart/>} />
             </Route>
 

@@ -5,6 +5,8 @@ import Li1 from '../../../Assets/ProductPage/li1.png'
 import Li2 from '../../../Assets/ProductPage/li2.png'
 import Li3 from '../../../Assets/ProductPage/li3.png'
 import FeaturedCategory from '../Shared/FeaturedCategory'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/slices/cartSlice'
 
 
 const ProductPage = () => {
@@ -14,9 +16,17 @@ useEffect(()=>{
 const shipmentDeats = {Expected_Arrival: "Date", Warrantee: "Years", Description: "Details"}
 const details = {Description: "Details", description: "details",description: "details",description: "details",description: "details",description: "details",description: "details",description: "details"}
 const imageList = [Li1, Li2, Li3]
-const {categoryName, product} = useParams();
+const {categoryName, product} = useParams(); //to be replaced with product.id
 const [clicked, setClicked] = useState(0);
 const [count, setCount] = useState(1)
+const dispatch = useDispatch();
+const handleAddToCart = () => {
+    dispatch(addToCart({
+      productId: product, //to be replaced with product.id
+      quantity: count
+    }))
+  }
+
   return (
     <div className='productPage'>
 
@@ -36,7 +46,7 @@ const [count, setCount] = useState(1)
                 <div className="variable">{count}</div>
                 <div className="plus" onClick={()=>{setCount(count+1)}}>+</div>
             </div>
-        <button >Add to Cart</button>
+        <button onClick={handleAddToCart}  >Add to Cart</button>
         </div>
     </div>
 

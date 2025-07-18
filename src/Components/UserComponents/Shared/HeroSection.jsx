@@ -42,7 +42,7 @@ const HeroSec2 = () => {
           </div>
           <div className="label">
             <img src={HeadingLabel} alt="label heading" />
-            <label> Explore high-quality firearm accessories, air rifles, and tactical gear – built for professionals and enthusiasts alike.</label>
+            <label> Explore High-Quality Firearm Accessories, Air Rifles, and Tactical Gear – Built for Professionals and Enthusiasts Alike.</label>
           </div>
 
           <div className="slider">

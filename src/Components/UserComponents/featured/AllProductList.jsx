@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/AllProductList.css'
 import HeroIMG from '../../../Assets/AllProducts/heroMagzine.png'
 import Riffle from '../../../Assets/AllProducts/rifflesScopes.png'
@@ -38,22 +38,26 @@ const AllProductList = () => {
     {
       image : Magzines,
       title :'Magzine',
-      rate : 'XXXX'
+      rate : 'XXXX',
+      subcategory : "Red Dot Sight"
     },
     {
       image : Magzines,
       title :'Magzine',
-      rate : 'XXXX'
+      rate : 'XXXX',
+      subcategory : "Red Dot Sight"
     },
     {
       image : Magzines,
       title :'Magzine',
-      rate : 'XXXX'
+      rate : 'XXXX',
+      subcategory : "Red Dot Sight"
     },
     {
       image : Magzines,
       title :'Magzine',
-      rate : 'XXXX'
+      rate : 'XXXX',
+      subcategory : "Red Dot Sight"
     }
    
   ]
@@ -69,6 +73,7 @@ const AllProductList = () => {
   
 
   const {categoryName} = useParams();
+  const navigate = useNavigate();
   return (
     <>
     <div className='AllProductList'>
@@ -78,7 +83,8 @@ const AllProductList = () => {
 
         <div className="subcategoryList">
             {chunks[0].map((slide, index)=>(
-              <SubCategoryCard 
+              <SubCategoryCard
+              onClick={()=>navigate(`/categories/${categoryName}/${slide.subcategory}`)} 
               key={index}
               imgURL={slide.imgURL}
               title={slide.subcategory}
@@ -89,9 +95,9 @@ const AllProductList = () => {
         <div className="CatTitle">Shop All</div>
         <div className="shopAll"></div>
         {proChunks.map((group, index)=>(
-          <div className="allProducts">   
+          <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>(
-              <ProductCard category={categoryName} image={slide.image} title={slide.title} rate={slide.rate} />
+              <ProductCard key={sindex} subCategory={slide.subcategory} category={categoryName} image={slide.image} title={slide.title} rate={slide.rate} />
             ))}
           </div>
 

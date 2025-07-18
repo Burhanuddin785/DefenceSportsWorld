@@ -17,6 +17,12 @@ const Cart = () => {
         {
             title: "Name",
             image: Scope,
+            quantity: 4,
+            price: "XXXX"
+        },
+        {
+            title: "Name",
+            image: Scope,
             quantity: 3,
             price: "XXXX"
         }

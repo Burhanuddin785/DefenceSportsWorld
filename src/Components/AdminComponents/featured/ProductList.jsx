@@ -9,6 +9,7 @@ const ProductList = () => {
       .get("http://localhost:8080/api/products")
       .then((res) => {
         setProducts(res.data);
+        
       })
       .catch((err) => {
         console.error("Failed to fetch products:", err);
@@ -43,7 +44,7 @@ const ProductList = () => {
                 <ul style={{ paddingLeft: "16px" }}>
                   {product.specifications.map((spec, i) => (
                     <li key={i}>
-                      <strong>{spec.key}:</strong> {spec.value}
+                      <strong>{spec.description}:</strong> {spec.detail}
                     </li>
                   ))}
                 </ul>
@@ -53,7 +54,7 @@ const ProductList = () => {
                   {product.images.map((img, i) => (
                     <img
                       key={i}
-                      src={`http://localhost:8080/adminUploads/products/${img}`}
+                      src={`http://localhost:8080/adminUploads/products/${product.subCategory}/${img}`}
                       alt={`Product ${i}`}
                       style={{ width: "70px", height: "auto", objectFit: "cover" }}
                     />
