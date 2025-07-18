@@ -16,6 +16,17 @@ const ProductList = () => {
       });
   }, []);
 
+  const handleDelete = (id)=>{
+    if(window.confirm("Are you sure you want to delete this product")){
+      axios.delete(`http://localhost:8080/api/products/${id}`)
+      .then(()=>{
+        alert("Product Deleted Successfully");
+      })
+      .catch((err)=>{console.log(err); alert("Something went wrong")})
+
+    }
+  }
+
   return (
     <div style={{ padding: "20px" }}>
       <h2>Product List</h2>
@@ -36,11 +47,11 @@ const ProductList = () => {
         <tbody>
           {products.map((product, index) => (
             <tr key={index}>
-              <td>{product.name}</td>
+              <td> <div className="scrollable-specs"> {product.name}</div></td>
               <td>{product.serialNumber}</td>
               <td>{product.rate}</td>
-              <td>{product.description}</td>
-              <td>
+              <td> <div className="scrollable-specs"> {product.description}</div></td>
+              <td> <div className="scrollable-specs">
                 <ul style={{ paddingLeft: "16px" }}>
                   {product.specifications.map((spec, i) => (
                     <li key={i}>
@@ -48,13 +59,14 @@ const ProductList = () => {
                     </li>
                   ))}
                 </ul>
+                  </div>
               </td>
               <td>
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   {product.images.map((img, i) => (
                     <img
                       key={i}
-                      src={`http://localhost:8080/adminUploads/products/${product.subCategory}/${img}`}
+                      src={`http://localhost:8080/adminUploads/products/${product.subCategory}/${img.filename}`}
                       alt={`Product ${i}`}
                       style={{ width: "70px", height: "auto", objectFit: "cover" }}
                     />
@@ -65,7 +77,7 @@ const ProductList = () => {
                 <button>Edit</button>
               </td>
               <td>
-                <button>Delete</button>
+                <button onClick={()=>{ handleDelete(product._id)} }>Delete</button>
               </td>
             </tr>
           ))}

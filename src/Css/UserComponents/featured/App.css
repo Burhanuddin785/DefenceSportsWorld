@@ -10,3 +10,7 @@
     color: #222;
     overflow-x: hidden;
   }
+  .scrollable-specs {
+  max-height: 120px;  
+  overflow-y: auto;
+}
