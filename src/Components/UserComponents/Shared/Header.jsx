@@ -18,6 +18,7 @@ import LogIn from "./LogIn";
     }, 10)
     clearTimeout(timer);
   }
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -40,15 +41,19 @@ import LogIn from "./LogIn";
             <input className="search" placeholder="Search..." type="text"/>
           </div>
         </div>
-
-        <div className="navigation">
-        <div className="text-wrapper" onClick={()=>{navigate('/')}} >Home</div>
-        <div className="text-wrapper" onClick={()=>{navigate('/')}}>About</div>
-        <div className="text-wrapper">Contacts</div>
-        <div className="text-wrapper" onClick={()=> handleModal()}>LogIn</div>
-        <img className="vector" alt="Vector" src={vector} onClick={()=>{navigate('/cart')}} />
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          &#9776;
         </div>
-    </div> 
+
+        <div className={`navigation ${menuOpen ? "open" : ""}`}>
+          <div className="text-wrapper" onClick={() => navigate("/")}>Home</div>
+          <div className="text-wrapper" onClick={() => navigate("/")}>About</div>
+          <div className="text-wrapper">Contacts</div>
+          <div className="text-wrapper" onClick={handleModal}>LogIn</div>
+          <img className="vector" alt="Cart" src={vector} onClick={() => navigate("/cart")} />
+        </div>
+      </div>
+    
 
     {showModal && (
       <div className={`modalOverlay ${animate ? "show" : ""}`} onClick={()=>setShowmodal(false)}>

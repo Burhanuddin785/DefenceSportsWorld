@@ -27,9 +27,9 @@ const AllProductList = () => {
     axios.get(`http://localhost:8080/api/subcategories/${categoryID}`).then((res)=>{
       setSubCategories(res.data);
       // console.log("Subcategory useEffect got triggered")
-    })
+    }).catch(err=>{console.log(err)})
 
-    axios.get(`http://localhost:8080/api/categories/hero/${categoryID}`).then((res)=> setHero(res.data[0].heroImage));
+    axios.get(`http://localhost:8080/api/categories/hero/${categoryID}`).then((res)=> setHero(res.data[0].heroImage)).catch(error=> console.log(error));
     axios.get(`http://localhost:8080/api/products/${categoryID}?spec=category`).then((res) => {setProducts(res.data); console.log(res.data)}).catch(error=> console.log(error))
     },[categoryID])
 

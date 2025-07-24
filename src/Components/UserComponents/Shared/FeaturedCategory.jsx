@@ -10,7 +10,7 @@ const FeaturedCategory = ({heading , shouldFetch}) => {
   const [category, setCategory] = useState([])
     useEffect(()=>{
       if(!shouldFetch) return;
-      axios.get('http://localhost:8080/api/categories/featured').then((res)=> { setCategory(res.data); console.log("featured category useEffect got fired") });
+      axios.get('http://localhost:8080/api/categories/featured').then((res)=> { setCategory(res.data); console.log("featured category useEffect got fired") }).catch(error=> console.log(error));
     },[shouldFetch])
  
       let navigate = useNavigate();
