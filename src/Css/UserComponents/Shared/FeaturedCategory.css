@@ -7,6 +7,7 @@
 
 
 .FeaturedCat{
+    position: default;
     margin-left: 2%;
     margin-bottom: 2%;
 }
@@ -27,7 +28,7 @@
     background-repeat: no-repeat;
     background-position: center;
     /* background: linear-gradient(to top, rgba(0, 0, 0, 7), transparent); */
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* ✅ Push content to the bottom */

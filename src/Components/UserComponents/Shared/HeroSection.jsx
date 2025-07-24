@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../../Css/UserComponents/Shared/HeroSec.css'
 import DSW from '../../../Assets/HeroSection/DEFENCE SPORTS WORLD.png'
 import HeadingLabel from '../../../Assets/HeroSection/Precision Gear for Every Shooter.png'
@@ -21,6 +21,13 @@ const HeroSec2 = () => {
     { image: Stands, title: 'Stands', rate: 'XXXX', category: "magzines" },
     { image: Sights, title: 'Sights', rate: 'XXXX', category: "magzines" },
   ]
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const [slide, setSlide] = useState(1)
   const navigate = useNavigate()
@@ -34,7 +41,7 @@ const HeroSec2 = () => {
   }
 
   return (
-    <main>
+    
       <div className="container">
         <div className="content">
           <div className="DSW">
@@ -54,8 +61,11 @@ const HeroSec2 = () => {
               <div
                 className="sliderTrack"
                 style={{
-                   transform: `translateX(calc(50% - ${(slide * 280) + 130}px)`,
-                }}
+                transform: isMobile
+                  ? `translateX(-${slide * 104}vw)`  // for mobile
+                  : `translateX(calc(50% - ${(slide * 280) + 130}px))`,
+                 transition: 'transform 0.5s ease-in-out',}
+              }
               >
                 {allProducts.map((product, index) => (
                   <div
@@ -80,7 +90,7 @@ const HeroSec2 = () => {
           </div>
         </div>
       </div>
-    </main>
+    
   )
 }
 
