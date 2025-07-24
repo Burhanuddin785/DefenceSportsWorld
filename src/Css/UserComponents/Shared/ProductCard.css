@@ -26,6 +26,8 @@
   
   .cardHeader .title {
     font-family: 'Oswald-SemiBold', Helvetica;
+    height: 9vh;
+    overflow: hidden;
     font-size: 2.3rem;
     color: #c39970; /* golden brown */
     font-weight: 100 !important;

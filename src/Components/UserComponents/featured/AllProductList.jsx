@@ -1,110 +1,93 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/AllProductList.css'
 import HeroIMG from '../../../Assets/AllProducts/heroMagzine.png'
-import Riffle from '../../../Assets/AllProducts/rifflesScopes.png'
-import RedDotSight from '../../../Assets/AllProducts/redDotSight.png'
-import NightVisionThermal from '../../../Assets/AllProducts/nightVisionThermal.png'
 import SubCategoryCard from '../Shared/SubCategoryCard'
 import WhoWeAre from '../Shared/WhoWeAre'
 import Magzines from '../../../Assets/HeroSection/Magzines.png'
 import ProductCard from '../Shared/ProductCard'
 import FeaturedCategory from '../Shared/FeaturedCategory'
+import axios from 'axios'
 
 const AllProductList = () => {
+  const {categoryName} = useParams();
+  const [searchParams] = useSearchParams();
+  const categoryID = searchParams.get('cid');
+  const [subcategories , setSubCategories] = useState([]);
+  const [chunks, setChunks] = useState([]);
+  const [hero, setHero] = useState('')
+  const [products, setProducts] = useState([]);
   useEffect(()=>{
-    window.scrollTo({top: 0, behavior: 'instant'})
-  })
+    window.scrollTo({top: 0, behavior: 'instant'});
+    
+  },[])
 
-  let subcategories = [
-    {
-      subcategory : "Riffles Scopes",
-      imgURL: Riffle
-    },
-    {
-      subcategory : "Red Dot Sight",
-      imgURL: RedDotSight
-    },
-    {
-      subcategory : "Night Vision and Thermal",
-      imgURL: NightVisionThermal
-    },
-    {
-      subcategory : "Night Vision and Thermal",
-      imgURL: NightVisionThermal
+  useEffect(()=>{
+    if(!categoryID) return;
+    axios.get(`http://localhost:8080/api/subcategories/${categoryID}`).then((res)=>{
+      setSubCategories(res.data);
+      // console.log("Subcategory useEffect got triggered")
+    })
+
+    axios.get(`http://localhost:8080/api/categories/hero/${categoryID}`).then((res)=> setHero(res.data[0].heroImage));
+    axios.get(`http://localhost:8080/api/products/${categoryID}?spec=category`).then((res) => {setProducts(res.data); console.log(res.data)}).catch(error=> console.log(error))
+    },[categoryID])
+
+  
+  useEffect(()=>{
+    if(subcategories.length > 0){
+      const chunkSize = 3;
+      const chunks = [];
+      for (let i = 0; i < subcategories.length; i += chunkSize) {
+      chunks.push(subcategories.slice(i, i + chunkSize));}
+      setChunks(chunks);
     }
-  ]
-  let allProducts = [
-    {
-      image : Magzines,
-      title :'Magzine',
-      rate : 'XXXX',
-      subcategory : "Red Dot Sight"
-    },
-    {
-      image : Magzines,
-      title :'Magzine',
-      rate : 'XXXX',
-      subcategory : "Red Dot Sight"
-    },
-    {
-      image : Magzines,
-      title :'Magzine',
-      rate : 'XXXX',
-      subcategory : "Red Dot Sight"
-    },
-    {
-      image : Magzines,
-      title :'Magzine',
-      rate : 'XXXX',
-      subcategory : "Red Dot Sight"
-    }
-   
-  ]
-  const chunkSize = 3;
-  const chunks = [];
-  for (let i = 0; i < subcategories.length; i += chunkSize) {
-    chunks.push(subcategories.slice(i, i + chunkSize));}
+  },[subcategories])
+
+const [productChunk, setProductChunk]= useState([])
+useEffect(()=>{
+  if(products.length==0) return;
   const proChunkSize = 4;
   const proChunks = [];
-  for(let i=0; i< allProducts.length; i += proChunkSize){
-    proChunks.push(allProducts.slice(i, i+ proChunkSize));
+  for(let i=0; i< products.length; i += proChunkSize){
+    proChunks.push(products.slice(i, i+ proChunkSize));
   }
-  
+  setProductChunk(proChunks);
+  console.log(proChunks)
+},[products])
 
-  const {categoryName} = useParams();
   const navigate = useNavigate();
   return (
     <>
     <div className='AllProductList'>
         <div className="title">{categoryName.charAt(0).toUpperCase()+ categoryName.slice(1)}</div>
-        <div className="heroimg"><img src={HeroIMG} alt="HeroImage" /></div>
+        <div className="heroimg"><img src={`http://localhost:8080/adminUploads/categories/${hero}`} alt="HeroImage" /></div>
         <div className="center">
 
         <div className="subcategoryList">
-            {chunks[0].map((slide, index)=>(
+            {chunks[0] && chunks[0].map((slide, index)=>(
               <SubCategoryCard
-              onClick={()=>navigate(`/categories/${categoryName}/${slide.subcategory}`)} 
+              onClick={()=>navigate(`/categories/${categoryName}/${slide.name}`)} 
               key={index}
-              imgURL={slide.imgURL}
-              title={slide.subcategory}
+              imgURL={`http://localhost:8080/adminUploads/subCategories/${slide.cardImage}`}
+              title={slide.name}
               />
             ))}
             </div>
         </div>
         <div className="CatTitle">Shop All</div>
         <div className="shopAll"></div>
-        {proChunks.map((group, index)=>(
+        {productChunk && productChunk.map((group, index)=>(
           <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>(
-              <ProductCard key={sindex} subCategory={slide.subcategory} category={categoryName} image={slide.image} title={slide.title} rate={slide.rate} />
+              <ProductCard key={sindex} subCategoryID={slide.subCategory} category={categoryName} image={slide.images[0].filename} title={slide.name} rate={slide.rate} />
             ))}
           </div>
-
+  
         ))}
     </div>
         <WhoWeAre/>
-        <FeaturedCategory heading={"Browse More Categories"}/>
+        <FeaturedCategory shouldFetch={true} heading={"Browse More Categories"}/>
 </>  )
 }
 

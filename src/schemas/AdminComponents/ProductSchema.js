@@ -8,6 +8,7 @@ const validationSchema = Yup.object({
       description: Yup.string().required("Required"),
       stock: Yup.number().required("Required"),
       discount: Yup.number(),
+      category: Yup.string().required("Required"),
       subCategory: Yup.string().required("Required"),
     })
 export default validationSchema 

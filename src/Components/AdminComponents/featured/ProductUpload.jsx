@@ -5,13 +5,26 @@ import validationSchema from "../../../schemas/AdminComponents/ProductSchema";
 
 const ProductUpload = () => {
   const [imageFiles, setImageFiles] = useState([]);
-  const [subCategories, setSubCategories] = useState([])
-   useEffect(() => {
-    axios.get('http://localhost:8080/api/subcategories')
-      .then((res) => {setSubCategories(res.data); console.log(res.data)})
-      .catch(err => console.error("Error fetching categories", err));
-  }, []);
+  const [subCategories, setSubCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCat, setSelectedCat] = useState([]);
+  useEffect(()=>{
+    axios.get('http://localhost:8080/api/categories')
+    .then(res => setCategories(res.data))
+    .catch(error => console.log(error))
+  },[])
 
+   useEffect(() => {
+    if(selectedCat.length==0) return;
+    
+    axios.get(`http://localhost:8080/api/subcategories/${selectedCat}`)
+      .then(res => setSubCategories(res.data))
+      .catch(err => console.error("Error fetching categories", err));
+  }, [selectedCat]);
+
+  const selectCat = (data)=>{
+    setSelectedCat(data.target.value);
+  }
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -20,6 +33,7 @@ const ProductUpload = () => {
       description: "",
       stock: "",
       discount: "",
+      category: "",
       subCategory: "",
       isFeatured: false,
       specifications: [{ description: "", detail: "" }],
@@ -31,11 +45,13 @@ const ProductUpload = () => {
 
       const formData = new FormData();
 
+      //this part is to send the subcategoryID as the uploadType to set folderName-----start
       const selectedSubCategory = subCategories.find(
      (cat) => cat._id === values.subCategory
       );
       const folderName = selectedSubCategory ? selectedSubCategory._id : "default";
       formData.append("uploadType", folderName);
+      //------end
 
       Object.entries(values).forEach(([key, val]) => {
         if (key === "specifications") {
@@ -95,14 +111,25 @@ const ProductUpload = () => {
       <input name="discount" placeholder="Discount (%)" type="number" onChange={formik.handleChange} />
       
       <div className='wrapper'>
+          <label>Parent Category</label>
+          <select name="category" onChange={(event)=>{formik.handleChange(event); selectCat(event) }} value={formik.values.category}>
+            <option value="">Select Category</option>
+            {categories.map(cat => (
+              <option key={cat._id} value={cat._id}>{cat.name}</option>
+            ))}
+          </select>
+          {formik.touched.category && formik.errors.category && <div>{formik.errors.category}</div>}
+        </div>
+
+      <div className='wrapper'>
           <label>Parent Sub-Category</label>
           <select name="subCategory" onChange={formik.handleChange} value={formik.values.subCategory}>
-            <option value="">Select Category</option>
+            <option value="">Select Sub-Category</option>
             {subCategories.map(cat => (
               <option key={cat._id} value={cat._id}>{cat.name}</option>
             ))}
           </select>
-          {formik.touched.parentCategory && formik.errors.parentCategory && <div>{formik.errors.parentCategory}</div>}
+          {formik.touched.subCategory && formik.errors.subCategory && <div>{formik.errors.subCategory}</div>}
         </div>
       
       <label>

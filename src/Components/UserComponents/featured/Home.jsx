@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
         <HeroSection/>
-        <FeaturedCategory heading={"Top Category Picks"}/>
+        <FeaturedCategory heading={"Top Category Picks"} shouldFetch={true}/>
         <BestSellingPicks/>
         <WhoWeAre/>
         

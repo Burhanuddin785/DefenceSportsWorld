@@ -1,50 +1,35 @@
-import React from 'react'
-import Magzines from '../../../Assets/FeaturedCategory/Magzines.jpg'
-import OpticsnSights from '../../../Assets/FeaturedCategory/Optics&Sights.jpg'
-import GunsAccesories from '../../../Assets/FeaturedCategory/Gun_Accessories.jpg'
+import React, { useEffect, useState } from 'react'
 import SeeAll from './SeeAllButton'
 import SeeAllVector from '../../../Assets/FeaturedCategory/SeeAllArrow.svg'
 import CategoryBox from './CategoryBox'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
-const FeaturedCategory = ({heading}) => {
-  
-    
-
-    const categoryData = [
-        {
-          imgSrc : Magzines,
-          title : "Magzines",
-          description : "Stay Loaded, Stay Ready!",
-        },
-        {
-            imgSrc : OpticsnSights,
-            title : "Optics and Sights",
-            description : "Sharp Vision, Precise Aim "
-        },
-        {
-            imgSrc : GunsAccesories,
-            title : "Gun Accesories",
-            description : "Enhance, Customize, Dominate"
-        }
-      ]  
+const FeaturedCategory = ({heading , shouldFetch}) => {
+  const [category, setCategory] = useState([])
+    useEffect(()=>{
+      if(!shouldFetch) return;
+      axios.get('http://localhost:8080/api/categories/featured').then((res)=> { setCategory(res.data); console.log("featured category useEffect got fired") });
+    },[shouldFetch])
+ 
       let navigate = useNavigate();
   
  return (     
    <>
    <div className="FeaturedCat">
-    <h1 oncli className='Heading'> {heading} </h1>
+    <h1 className='Heading'> {heading} </h1>
     <div className="CatList">
-        {categoryData.map((slide, index)=>(
+        {category.map((slide, index)=>(
             
                 <>
-                <CategoryBox key={index} onClick={()=>{navigate(`/categories/${slide.title}`)}} src={slide.imgSrc} title={slide.title} description={slide.description}/>
+                <CategoryBox key={index} onClick={()=>{navigate(`/categories/${slide.name}?cid=${slide._id}`); shouldFetch=false }}
+                src={`http://localhost:8080/adminUploads/categories/${slide.templateImage}`} title={slide.name} description={slide.tagLine}/>
                 </>
             
         ))}
         
-        <SeeAll onClick={()=>navigate('/categories')} className="see-all-instance" vector={SeeAllVector}/>
+        <SeeAll onClick={()=>{navigate('/categories'); shouldFetch= false}} className="see-all-instance" vector={SeeAllVector}/>
     </div>
     
 
