@@ -8,6 +8,9 @@ import Linkedin from '../../../Assets/Footer/linkedin.png'
 const Footer = () => {
   return (
     <>
+    <div className="footer">
+
+    
     <div className="footerHeader">
         <div className="headLine">Stay updated at all times. Get Defence Sports World’s news and offers</div>
         <div className="emailBlock">
@@ -37,6 +40,7 @@ const Footer = () => {
             <label>Licenses</label>
             <label>Affiliates</label>
         </div>
+    </div>
     </div>
     </>
   )

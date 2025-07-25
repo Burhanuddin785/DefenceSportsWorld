@@ -50,7 +50,9 @@ import LogIn from "./LogIn";
           <div className="text-wrapper" onClick={() => navigate("/")}>About</div>
           <div className="text-wrapper">Contacts</div>
           <div className="text-wrapper" onClick={handleModal}>LogIn</div>
-          <img className="vector" alt="Cart" src={vector} onClick={() => navigate("/cart")} />
+          <div className="text-wrapper">
+          <img className="headervector" alt="Cart" src={vector} onClick={() => navigate("/cart")} />
+          </div>
         </div>
       </div>
     

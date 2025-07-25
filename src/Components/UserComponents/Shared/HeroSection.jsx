@@ -62,7 +62,7 @@ const HeroSec2 = () => {
                 className="sliderTrack"
                 style={{
                 transform: isMobile
-                  ? `translateX(-${slide * 104}vw)`  // for mobile
+                  ? `translateX(-${slide * 100}vw)`  // for mobile
                   : `translateX(calc(50% - ${(slide * 280) + 130}px))`,
                  transition: 'transform 0.5s ease-in-out',}
               }

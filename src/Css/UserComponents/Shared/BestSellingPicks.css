@@ -14,11 +14,14 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
+    z-index: 901;
 }
 
-.Heading{
+.BSPHeading{
     margin-left: 2%;
     font-family: 'Oswald-Medium', Helvetica;
+    color: #c39970;
     font-size: 3rem;
     font-weight: 300;
 }

@@ -27,7 +27,7 @@ const BestSellingPicks = () => {
   return (
     <>
     <div className="bestSellingPicks">
-        <h1 className="Heading">Bestselling Picks</h1>
+        <h1 className="BSPHeading">Bestselling Picks</h1>
                 {productChunk && productChunk.map((group, index)=>(
           <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>

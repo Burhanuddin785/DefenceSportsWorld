@@ -1,4 +1,8 @@
 /* Common Styling */
+.footer{
+  position: relative;
+  z-index: 900;
+}
 .footerHeader, .footerBody {
     background-color: #202E3C;
     color: white;
