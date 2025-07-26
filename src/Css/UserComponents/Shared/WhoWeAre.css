@@ -58,3 +58,25 @@
     line-height: 1.5;
   }
   
+  @media (max-width: 768px) {
+  .featuredcards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 0 10px;
+  }
+
+  .cardgrid {
+    width: 100%;
+   
+  }
+
+  .cardHead {
+    font-size: 3rem;
+  }
+
+  .cardDescription {
+    font-size: 2rem;
+  }
+}

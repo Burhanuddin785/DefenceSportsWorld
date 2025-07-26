@@ -28,8 +28,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    /* background: linear-gradient(to top, rgba(0, 0, 0, 7), transparent); */
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* ✅ Push content to the bottom */
@@ -38,9 +36,6 @@
     max-width: 30%;
     min-height: 245px;
     min-width: 356px;
-    /* margin: ; */
-    
-   
 }
 
 .box::after {
@@ -87,9 +82,13 @@
 
 .see-all{
     background-image: url('../../../Assets/FeaturedCategory/SeeAllBg.png');
-    background-size: 100% 100%;
+    background-size: cover;
     height: 247px;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
     width: 122px;
 
 }
@@ -103,17 +102,57 @@
     left: 9px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
     text-align: center;
     top: 130px;
     width: 103px;
 
 }
 
-.see-all .vector{
+.see-all .FCvector{
     height: 63px;
     left: 31px;
-    position: absolute;
     top: 61px;
     width: 59px;
+}
+@media (max-width: 768px) {
+  .box {
+    max-width: 70%;
+    width: 70%;
+    background-size: cover;
+    height: auto;
+  }
+
+  .FeaturedCat{
+    margin-left: 1%;
+  }
+  .CatList {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .see-all {
+    width: 70%  ;
+    height: auto;
+    max-height: 140px;
+    justify-content: center;
+    flex-direction: row;
+    background-size: cover;
+  }
+
+  .see-all .text-wrapper {
+    font-size: 3.5rem;
+    text-align: center;
+    top: unset;
+    bottom: 10px;
+    width: 30%;
+    left: 0;
+  }
+
+  .see-all .vector {
+    width: 40px;
+    /* height: auto; */
+    /* top: 20px; */
+    left: calc(50% - 20px);
+  }
 }

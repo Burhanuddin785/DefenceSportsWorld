@@ -8,12 +8,10 @@ const SeeAll = ({onClick, className, vector }) => {
     return (
       <div onClick={onClick} style={{cursor: 'pointer'}} className={`see-all ${className}`}>
         <div className="text-wrapper">
-          See
-          <br />
-          All
+          See All
         </div>
   
-        <img className="vector" alt="Vector" src={vector} />
+        <img className="FCvector" alt="Vector" src={vector} />
       </div>
     );
   };

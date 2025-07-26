@@ -1,6 +1,8 @@
 .app{
     position: absolute;
     z-index: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
     background-image: url('./Assets/bgImage.png');
     object-fit: contain;
 }
