@@ -52,7 +52,7 @@ const HeroSec2 = () => {
             <label> Explore High-Quality Firearm Accessories, Air Rifles, and Tactical Gear – Built for Professionals and Enthusiasts Alike.</label>
           </div>
 
-          <div className="slider">
+          {/* <div className="slider">
             <div className={`vector left ${slide==0 && "blocked"}`} onClick={handlePrev}>
               <img src={Left} alt="left arrow" />
             </div>
@@ -81,7 +81,7 @@ const HeroSec2 = () => {
             <div className={`vector right ${slide==allProducts.length-1 && "blocked"}`} onClick={handleNext}>
               <img src={Right} alt="right arrow" />
             </div>
-          </div>
+          </div> */}
           <div className="bottom">
             <div className="sliderText">{allProducts[slide].title}</div>
                         <button onClick={() => navigate(`/categories/${allProducts[slide].category}/Magzine`)}>
