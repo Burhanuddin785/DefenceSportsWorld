@@ -51,7 +51,7 @@ const AllCategoryList = () => {
     chunks.push(categoryData.slice(i, i + chunkSize));
   }
   return (
-    <div className='CategoryList'>
+    <div className='UserCategoryList'>
         <div className="conatiner">
         <div className="CatTitle">All Categories</div>
         {chunks.map((group, groupIndex) => (

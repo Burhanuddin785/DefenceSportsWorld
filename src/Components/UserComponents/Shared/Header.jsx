@@ -46,12 +46,12 @@ import LogIn from "./LogIn";
         </div>
 
         <div className={`navigation ${menuOpen ? "open" : ""}`}>
-          <div className="text-wrapper" onClick={() => navigate("/")}>Home</div>
-          <div className="text-wrapper" onClick={() => navigate("/")}>About</div>
+          <div className="text-wrapper" onClick={() => {navigate("/"); setMenuOpen(false)}}>Home</div>
+          <div className="text-wrapper" onClick={() => {navigate("/"); setMenuOpen(false)}}>About</div>
           <div className="text-wrapper">Contacts</div>
-          <div className="text-wrapper" onClick={handleModal}>LogIn</div>
+          <div className="text-wrapper" onClick={()=> {handleModal(); setMenuOpen(false)}}>LogIn</div>
           <div className="text-wrapper">
-          <img className="headervector" alt="Cart" src={vector} onClick={() => navigate("/cart")} />
+          <img className="headervector" alt="Cart" src={vector} onClick={() => {navigate("/cart"); setMenuOpen(false)}} />
           </div>
         </div>
       </div>

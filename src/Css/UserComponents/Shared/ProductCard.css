@@ -73,4 +73,38 @@
     cursor: pointer;
     font-size: 1.8rem;
   }
-  
+@media screen and (max-width: 768px) {
+  .ProductCard {
+    width: 95%;
+    padding: 2.5%;
+    height: 30vh;
+  }
+  .cardHeader{
+    height: 12%;
+  }
+  .cardHeader .title {
+    font-size: 1rem !important;
+    height: 100%;
+    line-height: 1.2;
+  }
+
+  .cardBody {
+    border-width: 4px;
+    padding: 0;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .cardFooter .rate {
+    font-size: 1.3rem;
+  }
+
+  .cardFooter label {
+    font-size: 1.2rem;
+  }
+}

@@ -154,14 +154,14 @@
     gap: 10px;
   }
   .grid-item.one{
-    width: 60%;
-    height: 12vh;
+    width: 100%;
+    height: auto;
     
   }
   .grid-item.one img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .logo {
@@ -172,12 +172,12 @@
 
   .seach-bar {
     width: 100%;
-    height: 8vh;
+    height: auto;
     align-self: center;
     justify-content: flex-start;
   }
   .seach-bar img{
-    height: 70%;
+    height: 50%;
   }
 
   .search {
@@ -186,7 +186,7 @@
 
   .hamburger {
     display: block;
-    font-size: 4rem;
+    font-size: 2rem;
     color: #202e3c;
     text-align: right;
     padding: 0 20px;

@@ -1,18 +1,24 @@
-.CategoryList{
+.UserCategoryList{
     margin: 0px 30px;
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    height: auto;
 }
 
 
-.CategoryList .CatTitle{
+.UserCategoryList .CatTitle{
     margin: 10px 0px;
     margin-bottom: 20px;
     text-shadow: none;
 }
-.CategoryList .CatList{
+.UserCategoryList .CatList{
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width : 768px) {
+    
 }

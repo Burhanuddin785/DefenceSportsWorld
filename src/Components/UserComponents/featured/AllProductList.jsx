@@ -62,8 +62,8 @@ useEffect(()=>{
     <div className='AllProductList'>
         <div className="title">{categoryName.charAt(0).toUpperCase()+ categoryName.slice(1)}</div>
         <div className="heroimg"><img src={`http://localhost:8080/adminUploads/categories/${hero}`} alt="HeroImage" /></div>
-        <div className="center">
 
+        <div className="center">
         <div className="subcategoryList">
             {chunks[0] && chunks[0].map((slide, index)=>(
               <SubCategoryCard
@@ -75,6 +75,7 @@ useEffect(()=>{
             ))}
             </div>
         </div>
+        
         <div className="CatTitle">Shop All</div>
         <div className="shopAll"></div>
         {productChunk && productChunk.map((group, index)=>(
