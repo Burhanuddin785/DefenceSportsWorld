@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/ProductPage.css'
-import Li1 from '../../../Assets/ProductPage/li1.png'
-import Li2 from '../../../Assets/ProductPage/li2.png'
-import Li3 from '../../../Assets/ProductPage/li3.png'
 import FeaturedCategory from '../Shared/FeaturedCategory'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/slices/cartSlice'
+import axios from 'axios'
 
 
 const ProductPage = () => {
+const [searchParams] = useSearchParams();
+const productID = searchParams.get('pid');
+const [product, setProduct] = useState(null);
 useEffect(()=>{
     window.scrollTo({top: 0, behavior: 'instant'})
-  })
+  },[])
+useEffect(()=>{
+    axios.get(`http://localhost:8080/api/products/${productID}`).then((res)=> {setProduct(res.data[0]);  console.log(res.data[0])}).catch(err=> console.log(err))
+},[productID])
+
 const shipmentDeats = {Expected_Arrival: "Date", Warrantee: "Years", Description: "Details"}
-const details = {Description: "Details", description: "details",description: "details",description: "details",description: "details",description: "details",description: "details",description: "details"}
-const imageList = [Li1, Li2, Li3]
-const {categoryName, product} = useParams(); //to be replaced with product.id
+const {categoryName, productTitle} = useParams(); //to be replaced with product.id
 const [clicked, setClicked] = useState(0);
 const [count, setCount] = useState(1)
 const dispatch = useDispatch();
 const handleAddToCart = () => {
     dispatch(addToCart({
-      productId: product, //to be replaced with product.id
+      productId: product._id, //to be replaced with product.id
       quantity: count
     }))
   }
@@ -32,15 +35,15 @@ const handleAddToCart = () => {
 
     <div className="topSec">
         <div className="imageList">
-            {imageList.map((limage, index)=>(
-                <div className={`image ${index === clicked  ? "clicked" : ""}`} ><img src={limage} onClick={()=>{setClicked(index)}} alt="image" /></div>
+            {product?.images?.map((limage, index)=>(
+                <div key={index} className={`image ${index === clicked  ? "clicked" : ""}`} ><img src={`http://localhost:8080/adminUploads/products/${product.subCategory._id}/${limage.filename}`} onClick={()=>{setClicked(index)}} alt="image" /></div>
             ))}
         </div>
-        <div className="productImage"> <img src={imageList[clicked]} alt="image" /> </div>
+        <div className="productImage"> <img src={`http://localhost:8080/adminUploads/products/${product?.subCategory?._id}/${product?.images?.[clicked]?.filename}`} alt="image" /> </div>
         <div className="heroDetails">
-            <div className="title">{product}</div>
-            <div className="serialNo">serial number</div>
-            <div className="price">XXXX</div>
+            <div className="title">{product?.name}</div>
+            <div className="serialNo">#{product?.serialNumber}</div>
+            <div className="price">₹ {product?.rate.toLocaleString('en-IN')}</div>
             <div className="counter">
                 <div className="minus" onClick={()=>{setCount(Math.max(1, count-1))}}>-</div>
                 <div className="variable">{count}</div>
@@ -53,21 +56,24 @@ const handleAddToCart = () => {
     <div className="middleSec">
         <div className="descriptionNSpecs">
             <div className="title">PRODUCT DESCRIPTION AND SPECS</div>
-            <div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, se</div>
+            <div className="description">{product?.description || "No Description Available"}</div>
             <div className="specs">
-                {Object.entries(details).map(([key, value])=>(
-                    <div className="row">
-                    <div className="left">{key}</div>
-                    <div className="right">{value}</div>                    
-                    </div>
-                ))}
+                {
+                    product?.specifications?.map((value, index) => {                   
+                    return (
+                        <div className="row" key={value._id || index}>
+                        <div className="left">{value.description}</div>
+                        <div className="right">{value.detail}</div>
+                        </div>
+                    );
+                }) || "No Specifications Available" }
             </div>
         </div>
         <div className="shipmentDetails">
             <div className="title">Other details</div>
             <div className="shipmentDeatsTable">
                 {Object.entries(shipmentDeats).map(([key, value])=>(
-                    <div className="row">
+                    <div className="row" >
                         <div className="left">{key.split('_').map((word => word.charAt(0).toUpperCase()+word.slice(1))).join(' ')}</div>
                         <div className="right">{value}</div>
                     </div>
@@ -77,7 +83,7 @@ const handleAddToCart = () => {
         <div className="boughtTogether"></div>
     </div>
 
-    <FeaturedCategory heading={"Browse More Categories"}/>
+    <FeaturedCategory heading={"Browse More Categories"} shouldFetch={true}/>
     </div>
   )
 }

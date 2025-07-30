@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import '../../../Css/UserComponents/featured/AllProductList.css'
-import HeroIMG from '../../../Assets/AllProducts/heroMagzine.png'
 import SubCategoryCard from '../Shared/SubCategoryCard'
 import WhoWeAre from '../Shared/WhoWeAre'
-import Magzines from '../../../Assets/HeroSection/Magzines.png'
 import ProductCard from '../Shared/ProductCard'
 import FeaturedCategory from '../Shared/FeaturedCategory'
 import axios from 'axios'
@@ -81,7 +79,7 @@ useEffect(()=>{
         {productChunk && productChunk.map((group, index)=>(
           <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>(
-              <ProductCard key={sindex} subCategoryID={slide.subCategory} category={categoryName} image={slide.images[0].filename} title={slide.name} rate={slide.rate} />
+              <ProductCard key={sindex} subCategory={slide.subCategory} category={categoryName} image={slide.images[0].filename} title={slide.name} productID={slide._id} rate={slide.rate} />
             ))}
           </div>
   

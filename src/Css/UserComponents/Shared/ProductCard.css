@@ -24,7 +24,7 @@
     margin-left: 2%;
   }
   
-  .cardHeader .title {
+  .cardHeader .PCtitle {
     font-family: 'Oswald-SemiBold', Helvetica;
     height: 9vh;
     overflow: hidden;
@@ -66,7 +66,7 @@
     margin-left: 2%;
     color: #c39970; /* ₹XXXX color */
     font-weight: 500;
-    font-size: 2.7rem;
+    font-size: 2rem;
   }
   
   .cardFooter label {
@@ -82,7 +82,7 @@
   .cardHeader{
     height: 12%;
   }
-  .cardHeader .title {
+  .cardHeader .PCtitle {
     font-size: 1rem !important;
     height: 100%;
     line-height: 1.2;

@@ -33,7 +33,7 @@ const ProductUpload = () => {
       description: "",
       stock: "",
       discount: "",
-      category: "",
+      category: { id: "", name: "" },
       subCategory: "",
       isFeatured: false,
       specifications: [{ description: "", detail: "" }],
@@ -56,7 +56,13 @@ const ProductUpload = () => {
       Object.entries(values).forEach(([key, val]) => {
         if (key === "specifications") {
           formData.append("specifications", JSON.stringify(val));
-        } else {
+        }else if (key === "category") {
+        const selectedCategory = categories.find(cat => cat._id === val);
+        formData.append("category", JSON.stringify({
+          id: selectedCategory?._id || "",
+          name: selectedCategory?.name || ""
+        }));
+      } else {
           formData.append(key, val);
         }
       });
