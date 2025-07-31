@@ -29,6 +29,17 @@ const handleAddToCart = () => {
       quantity: count
     }))
   }
+  const [expanded, setExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize(); // initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className='productPage'>
@@ -56,7 +67,13 @@ const handleAddToCart = () => {
     <div className="middleSec">
         <div className="descriptionNSpecs">
             <div className="title">PRODUCT DESCRIPTION AND SPECS</div>
-            <div className="description">{product?.description || "No Description Available"}</div>
+            <div className={`description ${expanded ? 'expanded' : ''}`}>{product?.description || "No Description Available"}
+                </div>
+                {isMobile && (
+                <div className="see-more-toggle" onClick={() => setExpanded(!expanded)}>
+                {expanded ? "See Less" : "See More"}
+                </div>
+              )}
             <div className="specs">
                 {
                     product?.specifications?.map((value, index) => {                   

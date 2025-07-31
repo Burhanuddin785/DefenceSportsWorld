@@ -139,6 +139,7 @@
     font-size: 1.25rem;
     max-width: 817px;
     border-top: 1px solid #AAAAAA;
+    /* position: relative; */
 
 }
 .middleSec .specs{
@@ -205,4 +206,58 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+}
+@media (max-width: 768px) {
+    .topSec{
+        flex-direction: column;
+    }
+    .imageList .image{
+        height: 80px;
+        width: 80px;
+    }
+    .productImage{
+        width: 100%;
+        height:auto;
+        margin: 0;
+    }
+    .topSec .heroDetails .title{
+        font-size: 1.5rem;
+    }
+    .middleSec{
+        flex-direction: column;
+    }
+    .description {
+    max-height: 40vh;
+    overflow: hidden;
+    position: relative;
+  }
+  .description::after{
+    content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* adjust height as needed */
+  background: linear-gradient(to top, white, rgba(255, 255, 255, 0));
+  pointer-events: none; /* so clicks go through */
+  }
+  .description.expanded::after{
+    background: none;
+  }
+
+  .description.expanded {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .see-more-toggle {
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: right;
+  }
+  .shipmentDetails{
+    border-left: none;
+    margin-left: 0;
+  }
 }

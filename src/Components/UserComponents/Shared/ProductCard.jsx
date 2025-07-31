@@ -14,7 +14,7 @@ const ProductCard = ({image, title, rate, category, subCategory, productID}) => 
             <div className="image"><img src={`http://localhost:8080/adminUploads/products/${subCategory?._id}/${image}`}/></div>
         </div>
         <div className="cardFooter">
-            <div className="rate">₹{rate.toLocaleString('en-IN')}</div>
+            <div className="rate">₹ {rate.toLocaleString('en-IN')}</div>
             <label onClick={category ? ()=>{navigate(`/categories/${category}/${subCategory?.name}/${title}?pid=${productID}`)} : ""}>View Details</label>
         </div>
     </div>

@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 const SeeAll = ({onClick, className, vector }) => {
   let navigate = useNavigate();
     return (
-      <div onClick={onClick} style={{cursor: 'pointer'}} className={`see-all ${className}`}>
+      <div onClick={onClick} style={{cursor: 'pointer'}} className={`see-all`}>
         <div className="text-wrapper">
-          See All
+          <div>See</div> <div>All</div>
         </div>
   
         <img className="FCvector" alt="Vector" src={vector} />

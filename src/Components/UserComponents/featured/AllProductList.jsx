@@ -65,7 +65,7 @@ useEffect(()=>{
         <div className="subcategoryList">
             {chunks[0] && chunks[0].map((slide, index)=>(
               <SubCategoryCard
-              onClick={()=>navigate(`/categories/${categoryName}/${slide.name}`)} 
+              onClick={()=>navigate(`/categories/${categoryName}/${slide.name}?sid=${slide._id}`)} 
               key={index}
               imgURL={`http://localhost:8080/adminUploads/subCategories/${slide.cardImage}`}
               title={slide.name}

@@ -1,8 +1,6 @@
 /* Common Styling */
-.footer{
-  position: relative;
-  z-index: 900;
-}
+
+
 .footerHeader, .footerBody {
     background-color: #202E3C;
     color: white;
@@ -106,3 +104,12 @@
     font-size: 18px;
   }
   
+  @media (max-width : 768px) {
+    .footerHeader{
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footerHeader .headLine{
+      max-width: 100%;
+    }
+  }

@@ -104,7 +104,9 @@
     line-height: normal;
     text-align: center;
     top: 130px;
-    width: 103px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
 
 }
 
@@ -132,7 +134,8 @@
   }
 
   .see-all {
-    width: 70%  ;
+    min-width: 356px  ;
+    max-width: 70%;
     height: auto;
     max-height: 140px;
     justify-content: center;
@@ -141,10 +144,12 @@
   }
 
   .see-all .text-wrapper {
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
     top: unset;
     bottom: 10px;
+    flex-direction: row;
+    gap: 10px;
     width: 30%;
     left: 0;
   }
