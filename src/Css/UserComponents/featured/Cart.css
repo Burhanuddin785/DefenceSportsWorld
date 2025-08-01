@@ -110,3 +110,6 @@ button {
     border: none;
     cursor: pointer;
 }
+button:hover{
+    background-color: #17212c;
+}

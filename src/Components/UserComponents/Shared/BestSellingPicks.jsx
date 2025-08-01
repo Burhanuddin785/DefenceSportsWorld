@@ -32,8 +32,16 @@ const BestSellingPicks = () => {
           <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>
               {
-                const categoryName = axios.get(`http://localhost:8080/api/categories/name/${slide._id}`).catch(err=>console.log(err))
-                return <ProductCard key={sindex} subCategory={slide.subCategory} category={categoryName} image={slide.images[0].filename} title={slide.name} rate={slide.rate} />}
+                // const categoryName = axios.get(`http://localhost:8080/api/categories/name/${slide._id}`).catch(err=>console.log(err))
+                return <ProductCard 
+                key={sindex} 
+                subCategory={slide.subCategory} 
+                category={slide.category} 
+                image={slide.images[0].filename} 
+                title={slide.name} 
+                productID={slide._id} 
+                rate={slide.rate}/>
+              }
                   
             )}
           </div>

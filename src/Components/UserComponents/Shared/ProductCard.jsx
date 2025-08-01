@@ -15,7 +15,7 @@ const ProductCard = ({image, title, rate, category, subCategory, productID}) => 
         </div>
         <div className="cardFooter">
             <div className="rate">₹ {rate.toLocaleString('en-IN')}</div>
-            <label onClick={category ? ()=>{navigate(`/categories/${category}/${subCategory?.name}/${title}?pid=${productID}`)} : ""}>View Details</label>
+            <label onClick={category ? ()=>{navigate(`/categories/${category?.name}/${subCategory?.name}/${title}?pid=${productID}`)} : ""}>View Details</label>
         </div>
     </div>
   )
