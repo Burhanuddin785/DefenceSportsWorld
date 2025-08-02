@@ -91,6 +91,13 @@
     font-size: 1.2rem;
     color: #202e3c;
 }
+.billbtn{
+    display: flex;
+    justify-content: center;
+    font-family: "Oswald-Regular", Helvetica;
+    font-size: 1.2rem;
+    color: #202e3c;
+}
 
 .billRow:last-child {
     font-weight: bold;
@@ -112,4 +119,27 @@ button {
 }
 button:hover{
     background-color: #17212c;
+}
+
+@media (max-width:768px) {
+    .topsec{
+        justify-content: center;
+        flex-direction: column;
+    }
+    .productList .list .row{
+        flex-direction: column;
+        border-bottom: 1px solid #ccc;
+    }
+    .productList .list .row .deats .title{
+        font-size: 1.4rem;
+    }
+    .topsec .bill{
+        border: none;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
 }

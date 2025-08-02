@@ -200,9 +200,9 @@
     z-index: 1000;
     border-radius: 8px;
     height: auto;
-    width: 30%;
+    width: 40%;
     right: 0;
-    top: 4%;
+    top: 70px;
     flex-direction: column;
     gap: 10px;
     background-color: #c39970eb;
@@ -215,7 +215,7 @@
   }
 
   .text-wrapper {
-    font-size: 3rem;
+    font-size: 1.5rem;
     color: #202e3c;
     display: flex;
     justify-content: center;
@@ -230,6 +230,9 @@
   .grid-item.two {
     width:inherit;
     justify-content: center;
+  }
+  .logInForm{
+    width: 90%;
   }
 }
 

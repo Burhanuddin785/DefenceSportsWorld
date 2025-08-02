@@ -62,7 +62,7 @@ const HeroSec2 = () => {
                 className="sliderTrack"
                 style={{
                 transform: isMobile
-                  ? `translateX(-${slide * 100}vw)`  // for mobile
+                  ? `translateX(-${slide * 100}%)`  // for mobile
                   : `translateX(calc(50% - ${(slide * 280) + 130}px))`,
                  transition: 'transform 0.5s ease-in-out',}
               }
@@ -82,13 +82,13 @@ const HeroSec2 = () => {
               <img src={Right} alt="right arrow" />
             </div>
           </div>
+        </div>
           <div className="bottom">
             <div className="sliderText">{allProducts[slide].title}</div>
                         <button onClick={() => navigate(`/categories/${allProducts[slide].category}/Magzine`)}>
                           Buy Now
                         </button>
           </div>
-        </div>
       </div>
     
   )

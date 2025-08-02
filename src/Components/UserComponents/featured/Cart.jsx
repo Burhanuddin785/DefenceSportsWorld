@@ -1,11 +1,11 @@
 import React,{ useEffect, useState } from 'react'
 import '../../../Css/UserComponents/featured/Cart.css'
 import Counter from '../Shared/Counter'
-import Scope from '../../../Assets/ProductPage/li1.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateQuantity, removeFromCart, clearCart } from '../../../redux/slices/cartSlice'
 import axios from 'axios'
 import LogIn from "../Shared/LogIn";
+
 
 const Cart = () => {
     const user = useSelector(state => state.user);
@@ -26,7 +26,8 @@ const Cart = () => {
     // Fetch product details for all items in cart
     const fetchProducts = async () => {
       const responses = await Promise.all(
-        cartItems.map(item =>
+        
+        cartItems?.map(item =>
           axios.get(`http://localhost:8080/api/products/${item.productId}`).catch(err=>console.log(err))
         )
       )
@@ -124,11 +125,12 @@ const Cart = () => {
                     <div className="billItem">{`Total (${productData.length} item${productData.length>1?"s":""})`}</div>
                     <div className="billItem">₹ {gTotal.toLocaleString('en-IN')}</div>
                 </div>   
-                <div className="billRow">
+                <div className="billbtn">
                     <button onClick={user? handleCheckout : handleModal }>{user? "Check Out": "Log In to Check Out"}</button>
                 </div>                             
             </div>
         </div>
+
         {showModal && (
           <div className={`modalOverlay ${animate ? "show" : ""}`} onClick={()=>setShowmodal(false)}>
             <div className="modalContent" onClick={(e)=>{e.stopPropagation()}} >
