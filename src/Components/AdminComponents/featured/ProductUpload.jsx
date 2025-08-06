@@ -9,7 +9,7 @@ const ProductUpload = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCat, setSelectedCat] = useState([]);
   useEffect(()=>{
-    axios.get('http://localhost:8080/api/categories')
+    axios.get('http://api.defencesportsworld.com/api/categories')
     .then(res => setCategories(res.data))
     .catch(error => console.log(error))
   },[])
@@ -17,7 +17,7 @@ const ProductUpload = () => {
    useEffect(() => {
     if(selectedCat.length==0) return;
     
-    axios.get(`http://localhost:8080/api/subcategories/${selectedCat}`)
+    axios.get(`http://api.defencesportsworld.com/api/subcategories/${selectedCat}`)
       .then(res => setSubCategories(res.data))
       .catch(err => console.error("Error fetching categories", err));
   }, [selectedCat]);
@@ -72,7 +72,7 @@ const ProductUpload = () => {
       });
 
       try {
-        const res = await axios.post("http://localhost:8080/api/products", formData, {
+        const res = await axios.post("http://api.defencesportsworld.com/api/products", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

@@ -7,7 +7,7 @@ import axios from 'axios'
 const AllCategoryList = () => {
   const [categories, setCategories] = useState([]);
   useEffect(()=>{
-    axios.get('http://localhost:8080/api/categories').then(res=> setCategories(res.data)).catch(err=>console.log(err))
+    axios.get('http://api.defencesportsworld.com/api/categories').then(res=> setCategories(res.data)).catch(err=>console.log(err))
   },[])
 
   const chunkSize = 3;
@@ -27,7 +27,7 @@ const AllCategoryList = () => {
               <CategoryBox
                 onClick={()=> navigate(`/categories/${slide.name}?cid=${slide._id}`)}
                 key={index}
-                src={`http://localhost:8080/adminUploads/categories/${slide.templateImage}`}
+                src={`http://api.defencesportsworld.com/adminUploads/categories/${slide.templateImage}`}
                 title={slide.name}
                 description={slide.tagLine}
               />

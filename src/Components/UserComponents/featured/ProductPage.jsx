@@ -15,7 +15,7 @@ useEffect(()=>{
     window.scrollTo({top: 0, behavior: 'instant'})
   },[])
 useEffect(()=>{
-    axios.get(`http://localhost:8080/api/products/${productID}`).then((res)=> {setProduct(res.data[0]);  console.log(res.data[0])}).catch(err=> console.log(err))
+    axios.get(`http://api.defencesportsworld.com/api/products/${productID}`).then((res)=> {setProduct(res.data[0]);  console.log(res.data[0])}).catch(err=> console.log(err))
 },[productID])
 
 const shipmentDeats = {Expected_Arrival: "Date", Warrantee: "Years", Description: "Details"}
@@ -47,10 +47,10 @@ const handleAddToCart = () => {
     <div className="topSec">
         <div className="imageList">
             {product?.images?.map((limage, index)=>(
-                <div key={index} className={`image ${index === clicked  ? "clicked" : ""}`} ><img src={`http://localhost:8080/adminUploads/products/${product.subCategory._id}/${limage.filename}`} onClick={()=>{setClicked(index)}} alt="image" /></div>
+                <div key={index} className={`image ${index === clicked  ? "clicked" : ""}`} ><img src={`http://api.defencesportsworld.com/adminUploads/products/${product.subCategory._id}/${limage.filename}`} onClick={()=>{setClicked(index)}} alt="image" /></div>
             ))}
         </div>
-        <div className="productImage"> <img src={`http://localhost:8080/adminUploads/products/${product?.subCategory?._id}/${product?.images?.[clicked]?.filename}`} alt="image" /> </div>
+        <div className="productImage"> <img src={`http://api.defencesportsworld.com/adminUploads/products/${product?.subCategory?._id}/${product?.images?.[clicked]?.filename}`} alt="image" /> </div>
         <div className="heroDetails">
             <div className="title">{product?.name}</div>
             <div className="serialNo">#{product?.serialNumber}</div>

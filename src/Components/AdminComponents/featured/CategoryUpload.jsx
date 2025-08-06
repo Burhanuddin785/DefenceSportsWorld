@@ -27,7 +27,7 @@ const CategoryUpload = () => {
 
                 try {
                     
-                    const res = await axios.post("http://localhost:8080/api/categories", formData, {
+                    const res = await axios.post("http://api.defencesportsworld.com/api/categories", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     }

@@ -7,7 +7,7 @@ import axios from 'axios'
 const BestSellingPicks = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    axios.get('http://localhost:8080/api/products/featured').then(res=> setProducts(res.data)).catch(err=>console.log(err))
+    axios.get('http://api.defencesportsworld.com/api/products/featured').then(res=> setProducts(res.data)).catch(err=>console.log(err))
   },[])
 
   const [productChunk, setProductChunk]= useState([])
@@ -32,7 +32,7 @@ const BestSellingPicks = () => {
           <div className="allProducts" key={index}>   
             {group.map((slide, sindex)=>
               {
-                // const categoryName = axios.get(`http://localhost:8080/api/categories/name/${slide._id}`).catch(err=>console.log(err))
+                
                 return <ProductCard 
                 key={sindex} 
                 subCategory={slide.subCategory} 

@@ -6,7 +6,7 @@ const SubCategoryList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/subcategories")
+      .get("http://api.defencesportsworld.com/api/subcategories")
       .then((res) => {
         setSubCategories(res.data);
       })
@@ -36,14 +36,14 @@ const SubCategoryList = () => {
               <td>{sub.tagLine}</td>
               <td>
                 <img
-                  src={`http://localhost:8080/adminUploads/subCategories/${sub.cardImage}`}
+                  src={`http://api.defencesportsworld.com/adminUploads/subCategories/${sub.cardImage}`}
                   alt="Card"
                   style={{ width: "100px", height: "auto" }}
                 />
               </td>
               <td>
                 <img
-                  src={`http://localhost:8080/adminUploads/subCategories/${sub.heroImage}`}
+                  src={`http://api.defencesportsworld.com/adminUploads/subCategories/${sub.heroImage}`}
                   alt="Hero"
                   style={{ width: "100px", height: "auto" }}
                 />

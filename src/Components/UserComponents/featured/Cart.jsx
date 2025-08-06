@@ -28,7 +28,7 @@ const Cart = () => {
       const responses = await Promise.all(
         
         cartItems?.map(item =>
-          axios.get(`http://localhost:8080/api/products/${item.productId}`).catch(err=>console.log(err))
+          axios.get(`http://api.defencesportsworld.com/api/products/${item.productId}`).catch(err=>console.log(err))
         )
       )
       setProductData(responses.map(res => res.data[0])) // assuming .find returns an array
@@ -48,7 +48,7 @@ const Cart = () => {
   const handleCheckout = async () => {
   const amount = gTotal; // from Redux or local calc
 
-  const res = await axios.post('http://localhost:8080/api/payment/create-order', { amount });
+  const res = await axios.post('http://api.defencesportsworld.com/api/payment/create-order', { amount });
   const { orderId } = res.data;
 
   const options = {
@@ -66,7 +66,7 @@ const Cart = () => {
         razorpayPaymentId: response.razorpay_payment_id,
         razorpayOrderId: response.razorpay_order_id,
       };
-      await axios.post('http://localhost:8080/api/orders', orderData).catch((err)=>{console.log(err); alert('Payment Failed')});
+      await axios.post('http://api.defencesportsworld.com/api/orders', orderData).catch((err)=>{console.log(err); alert('Payment Failed')});
       alert('Payment Successful!');
     },
     prefill: {
@@ -101,7 +101,7 @@ const Cart = () => {
                         const item = cartItems.find(i => i.productId === value._id)
                     return (
                     <div className="row" key={value._id}>
-                        <div className="image"><img src={`http://localhost:8080/adminUploads/products/${value.subCategory._id}/${value.images[0].filename}`}/></div>
+                        <div className="image"><img src={`http://api.defencesportsworld.com/adminUploads/products/${value.subCategory._id}/${value.images[0].filename}`}/></div>
                         <div className="deats">
                         <div className="title">{value.name}</div>
                         <Counter value={item.quantity} onChange={(newQuantity) => handleQuantityChange(value._id, newQuantity)}/> 
