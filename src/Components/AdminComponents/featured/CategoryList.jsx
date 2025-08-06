@@ -6,12 +6,12 @@ const CategoryList = () => {
   const [listData, setListData] = useState([]);
   const navigate = useNavigate();
   useEffect(()=>{
-    axios.get("http://api.defencesportsworld.com/api/categories").then((res)=>{ setListData(res.data); console.log(listData)}).catch((err)=>{console.log(err)})
+    axios.get("https://api.defencesportsworld.com/api/categories").then((res)=>{ setListData(res.data); console.log(listData)}).catch((err)=>{console.log(err)})
   },[])
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
-      axios.delete(`http://api.defencesportsworld.com/api/categories/${id}`)
+      axios.delete(`https://api.defencesportsworld.com/api/categories/${id}`)
         .then(() => {
           alert("Deleted successfully!");
           window.location.reload();
@@ -43,8 +43,8 @@ const CategoryList = () => {
             return(
               <tr key={index}>
                 <td className='tableData'>{data.name}</td>
-                <td className='tableData'><img className='template' src={`http://api.defencesportsworld.com/adminUploads/categories/${data.templateImage}`} alt="template"/></td>
-                <td className='tableData'><img className='hero' src={`http://api.defencesportsworld.com/adminUploads/categories/${data.heroImage}`} alt="hero"/></td>
+                <td className='tableData'><img className='template' src={`https://api.defencesportsworld.com/adminUploads/categories/${data.templateImage}`} alt="template"/></td>
+                <td className='tableData'><img className='hero' src={`https://api.defencesportsworld.com/adminUploads/categories/${data.heroImage}`} alt="hero"/></td>
                 <td className='tableData'>{data.tagLine}</td>
                 {/* <td className='tableData'><button>Edit</button></td> */}
                 <td className='tableData'><button onClick={()=>{handleDelete(data._id)}}>Delete</button></td>

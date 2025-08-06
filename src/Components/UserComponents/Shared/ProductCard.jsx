@@ -11,7 +11,7 @@ const ProductCard = ({image, title, rate, category, subCategory, productID}) => 
             <div className="PCtitle">{title}</div>
         </div>
         <div className="cardBody">
-            <div className="image"><img src={`http://api.defencesportsworld.com/adminUploads/products/${subCategory?._id}/${image}`}/></div>
+            <div className="image"><img src={`https://api.defencesportsworld.com/adminUploads/products/${subCategory?._id}/${image}`}/></div>
         </div>
         <div className="cardFooter">
             <div className="rate">₹ {rate.toLocaleString('en-IN')}</div>

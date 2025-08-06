@@ -10,7 +10,7 @@ const FeaturedCategory = ({heading , shouldFetch}) => {
   const [category, setCategory] = useState([])
     useEffect(()=>{
       if(!shouldFetch) return;
-      axios.get('http://api.defencesportsworld.com/api/categories/featured').then((res)=> { setCategory(res.data); console.log("featured category useEffect got fired") }).catch(error=> console.log(error));
+      axios.get('https://api.defencesportsworld.com/api/categories/featured').then((res)=> { setCategory(res.data); console.log("featured category useEffect got fired") }).catch(error=> console.log(error));
     },[shouldFetch])
  
       let navigate = useNavigate();
@@ -24,7 +24,7 @@ const FeaturedCategory = ({heading , shouldFetch}) => {
             
                 <>
                 <CategoryBox key={index} onClick={()=>{navigate(`/categories/${slide.name}?cid=${slide._id}`); shouldFetch=false }}
-                src={`http://api.defencesportsworld.com/adminUploads/categories/${slide.templateImage}`} title={slide.name} description={slide.tagLine}/>
+                src={`https://api.defencesportsworld.com/adminUploads/categories/${slide.templateImage}`} title={slide.name} description={slide.tagLine}/>
                 </>
             
         ))}

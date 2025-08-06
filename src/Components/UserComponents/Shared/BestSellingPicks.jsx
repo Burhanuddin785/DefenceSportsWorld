@@ -7,7 +7,7 @@ import axios from 'axios'
 const BestSellingPicks = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
-    axios.get('http://api.defencesportsworld.com/api/products/featured').then(res=> setProducts(res.data)).catch(err=>console.log(err))
+    axios.get('https://api.defencesportsworld.com/api/products/featured').then(res=> setProducts(res.data)).catch(err=>console.log(err))
   },[])
 
   const [productChunk, setProductChunk]= useState([])

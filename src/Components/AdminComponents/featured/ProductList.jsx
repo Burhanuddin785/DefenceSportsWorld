@@ -6,7 +6,7 @@ const ProductList = () => {
 
   useEffect(() => {
     axios
-      .get("http://api.defencesportsworld.com/api/products")
+      .get("https://api.defencesportsworld.com/api/products")
       .then((res) => {
         setProducts(res.data);
         
@@ -18,7 +18,7 @@ const ProductList = () => {
 
   const handleDelete = (id)=>{
     if(window.confirm("Are you sure you want to delete this product")){
-      axios.delete(`http://api.defencesportsworld.com/api/products/${id}`)
+      axios.delete(`https://api.defencesportsworld.com/api/products/${id}`)
       .then(()=>{
         alert("Product Deleted Successfully");
       })
@@ -66,7 +66,7 @@ const ProductList = () => {
                   {product.images.map((img, i) => (
                     <img
                       key={i}
-                      src={`http://api.defencesportsworld.com/adminUploads/products/${product.subCategory}/${img.filename}`}
+                      src={`https://api.defencesportsworld.com/adminUploads/products/${product.subCategory}/${img.filename}`}
                       alt={`Product ${i}`}
                       style={{ width: "70px", height: "auto", objectFit: "cover" }}
                     />

@@ -18,8 +18,8 @@ const AllProductList = () => {
   },[])
   useEffect(()=>{
     if(!subCategoryID) return;
-    axios.get(`http://api.defencesportsworld.com/api/subcategories/${subCategoryID}?spec=subcategory`).then(res=> setSubCategoryData(res.data[0])).catch(err=>console.log(err))
-    axios.get(`http://api.defencesportsworld.com/api/products/${subCategoryID}?spec=subCategory`).then(res=> {setProducts(res.data); console.log(res.data)}).catch(err=>console.log(err));
+    axios.get(`https://api.defencesportsworld.com/api/subcategories/${subCategoryID}?spec=subcategory`).then(res=> setSubCategoryData(res.data[0])).catch(err=>console.log(err))
+    axios.get(`https://api.defencesportsworld.com/api/products/${subCategoryID}?spec=subCategory`).then(res=> {setProducts(res.data); console.log(res.data)}).catch(err=>console.log(err));
   },[subCategoryID])
 
   useEffect(()=>{
@@ -39,7 +39,7 @@ const AllProductList = () => {
     <>
     <div className='AllProductList'>
         <div className="title">{categoryName.charAt(0).toUpperCase()+ categoryName.slice(1) + "/" +subCategoryName.charAt(0).toUpperCase()+ subCategoryName.slice(1) }</div>
-        <div className="heroimg"><img src={`http://api.defencesportsworld.com/adminUploads/subCategories/${subCategoryData?.heroImage}`} alt="HeroImage" /></div>
+        <div className="heroimg"><img src={`https://api.defencesportsworld.com/adminUploads/subCategories/${subCategoryData?.heroImage}`} alt="HeroImage" /></div>
         <div className="center">
 
         </div>

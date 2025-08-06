@@ -22,13 +22,13 @@ const AllProductList = () => {
 
   useEffect(()=>{
     if(!categoryID) return;
-    axios.get(`http://api.defencesportsworld.com/api/subcategories/${categoryID}`).then((res)=>{
+    axios.get(`https://api.defencesportsworld.com/api/subcategories/${categoryID}`).then((res)=>{
       setSubCategories(res.data);
       // console.log("Subcategory useEffect got triggered")
     }).catch(err=>{console.log(err)})
 
-    axios.get(`http://api.defencesportsworld.com/api/categories/hero/${categoryID}`).then((res)=> setHero(res.data[0].heroImage)).catch(error=> console.log(error));
-    axios.get(`http://api.defencesportsworld.com/api/products/${categoryID}?spec=category`).then((res) => {setProducts(res.data); console.log(res.data)}).catch(error=> console.log(error))
+    axios.get(`https://api.defencesportsworld.com/api/categories/hero/${categoryID}`).then((res)=> setHero(res.data[0].heroImage)).catch(error=> console.log(error));
+    axios.get(`https://api.defencesportsworld.com/api/products/${categoryID}?spec=category`).then((res) => {setProducts(res.data); console.log(res.data)}).catch(error=> console.log(error))
     },[categoryID])
 
   
@@ -59,7 +59,7 @@ useEffect(()=>{
     <>
     <div className='AllProductList'>
         <div className="title">{categoryName.charAt(0).toUpperCase()+ categoryName.slice(1)}</div>
-        <div className="heroimg"><img src={`http://api.defencesportsworld.com/adminUploads/categories/${hero}`} alt="HeroImage" /></div>
+        <div className="heroimg"><img src={`https://api.defencesportsworld.com/adminUploads/categories/${hero}`} alt="HeroImage" /></div>
 
         <div className="center">
         <div className="subcategoryList">
@@ -67,7 +67,7 @@ useEffect(()=>{
               <SubCategoryCard
               onClick={()=>navigate(`/categories/${categoryName}/${slide.name}?sid=${slide._id}`)} 
               key={index}
-              imgURL={`http://api.defencesportsworld.com/adminUploads/subCategories/${slide.cardImage}`}
+              imgURL={`https://api.defencesportsworld.com/adminUploads/subCategories/${slide.cardImage}`}
               title={slide.name}
               />
             ))}

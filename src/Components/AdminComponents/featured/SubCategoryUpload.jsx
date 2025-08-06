@@ -8,7 +8,7 @@ const SubCategoryUpload = () => {
 
   // Fetch parent categories on mount
   useEffect(() => {
-    axios.get('http://api.defencesportsworld.com/api/categories')
+    axios.get('https://api.defencesportsworld.com/api/categories')
       .then(res => setCategories(res.data))
       .catch(err => console.error("Error fetching categories", err));
   }, []);
@@ -35,7 +35,7 @@ const SubCategoryUpload = () => {
         const confirm = window.confirm("Are you sure you want to upload this subcategory?");
         if (!confirm) return;
 
-        const res = await axios.post("http://api.defencesportsworld.com/api/subcategories", formData, {
+        const res = await axios.post("https://api.defencesportsworld.com/api/subcategories", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
         console.log(res.data);
