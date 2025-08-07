@@ -56,7 +56,7 @@ import LogIn from "./LogIn";
 
         <div className={`navigation ${menuOpen ? "open" : ""}`}>
           <div className="text-wrapper" onClick={() => {navigate("/"); handleClick()}}>Home</div>
-          <div className="text-wrapper" onClick={() => {navigate("/"); handleClick()}}>About</div>
+          <div className="text-wrapper" onClick={() => {navigate("/aboutUs"); handleClick()}}>About</div>
           <div className="text-wrapper">Contacts</div>
           <div className="text-wrapper" onClick={()=> {handleModal(); handleClick()}}>LogIn</div>
           <div className="text-wrapper cartIcon">
