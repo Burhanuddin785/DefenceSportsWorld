@@ -39,6 +39,16 @@ const HeroSec2 = () => {
   const handleNext = () => {
     if (slide < allProducts.length - 1) setSlide(prev => prev + 1)
   }
+  //  useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (slide < allProducts.length - 1) setSlide(prev => prev + 1);
+  //     else setSlide(1);
+  //   }, 2000);
+
+  //   return () => clearInterval(interval); // Cleanup on unmount
+  // }, []);
+
+
 
   return (
     

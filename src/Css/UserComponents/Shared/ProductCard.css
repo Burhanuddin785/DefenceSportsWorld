@@ -77,10 +77,11 @@
   .ProductCard {
     width: 95%;
     padding: 2.5%;
-    height: 30vh;
+    height: fit-content;
   }
   .cardHeader{
-    height: 12%;
+    height: 20px;
+    margin: 3%;
   }
   .cardHeader .PCtitle {
     font-size: 1rem !important;

@@ -3,7 +3,7 @@ import "../../../Css/UserComponents/Shared/Header.css";
 import vector from "../../../Assets/Vector/Vector.svg";
 import SearchIcon from "../../../Assets/Header/SearchIcon.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import LogIn from "./LogIn";
 
 
@@ -19,6 +19,10 @@ import LogIn from "./LogIn";
     clearTimeout(timer);
   }
   const [menuOpen, setMenuOpen] = useState(false);
+  const burgerRef = useRef(null);
+  const handleClick = () => {
+    burgerRef.current?.click(); // Trigger click on .burger
+  };
 
   return (
     <>
@@ -41,17 +45,22 @@ import LogIn from "./LogIn";
             <input className="search" placeholder="Search..." type="text"/>
           </div>
         </div>
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          &#9776;
+        <div className="hamburger" >
+        <label class="burger" for="burger" >
+          <input type="checkbox" id="burger" ref={burgerRef} onClick={() => setMenuOpen(!menuOpen)}/>
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
         </div>
 
         <div className={`navigation ${menuOpen ? "open" : ""}`}>
-          <div className="text-wrapper" onClick={() => {navigate("/"); setMenuOpen(false)}}>Home</div>
-          <div className="text-wrapper" onClick={() => {navigate("/"); setMenuOpen(false)}}>About</div>
+          <div className="text-wrapper" onClick={() => {navigate("/"); handleClick()}}>Home</div>
+          <div className="text-wrapper" onClick={() => {navigate("/"); handleClick()}}>About</div>
           <div className="text-wrapper">Contacts</div>
-          <div className="text-wrapper" onClick={()=> {handleModal(); setMenuOpen(false)}}>LogIn</div>
-          <div className="text-wrapper">
-          <img className="headervector" alt="Cart" src={vector} onClick={() => {navigate("/cart"); setMenuOpen(false)}} />
+          <div className="text-wrapper" onClick={()=> {handleModal(); handleClick()}}>LogIn</div>
+          <div className="text-wrapper cartIcon">
+          <img className="headervector" alt="Cart" src={vector} onClick={() => {navigate("/cart"); handleClick()}} />
           </div>
         </div>
       </div>
@@ -61,7 +70,7 @@ import LogIn from "./LogIn";
       <div className={`modalOverlay ${animate ? "show" : ""}`} onClick={()=>setShowmodal(false)}>
         <div className="modalContent" onClick={(e)=>{e.stopPropagation()}} >
         <LogIn/>
-        {/* <button className="btn" onClick={()=> setShowmodal(false)} >X</button> */}
+        
         </div>
       </div>
     )}
