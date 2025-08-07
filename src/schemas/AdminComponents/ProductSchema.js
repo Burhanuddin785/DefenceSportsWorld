@@ -12,6 +12,9 @@ const validationSchema = Yup.object({
         id: Yup.string().required("Category ID is required"),
         name: Yup.string().required("Category name is required")
       }).required("Category is required"),
-      subCategory: Yup.string().required("Required"),
+      subCategory: Yup.object({
+        id: Yup.string().required("SubCategory ID is required"),
+        name: Yup.string().required("SubCategory name is required")
+      }).required("SubCategory is required"),
     })
 export default validationSchema 

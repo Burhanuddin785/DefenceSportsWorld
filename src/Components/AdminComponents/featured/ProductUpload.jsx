@@ -34,7 +34,7 @@ const ProductUpload = () => {
       stock: "",
       discount: "",
       category: { id: "", name: "" },
-      subCategory: "",
+      subCategory: { id: "", name: "" },
       isFeatured: false,
       specifications: [{ description: "", detail: "" }],
     },
@@ -56,12 +56,10 @@ const ProductUpload = () => {
       Object.entries(values).forEach(([key, val]) => {
         if (key === "specifications") {
           formData.append("specifications", JSON.stringify(val));
-        }else if (key === "category") {
-        const selectedCategory = categories.find(cat => cat._id === val);
-        formData.append("category", JSON.stringify({
-          id: selectedCategory?._id || "",
-          name: selectedCategory?.name || ""
-        }));
+        }
+        
+        else if (key === "category") {
+        formData.append("category", JSON.stringify(val));
       } else {
           formData.append(key, val);
         }
@@ -116,27 +114,63 @@ const ProductUpload = () => {
       <label>Discount</label>
       <input name="discount" placeholder="Discount (%)" type="number" onChange={formik.handleChange} />
       
-      <div className='wrapper'>
-          <label>Parent Category</label>
-          <select name="category" onChange={(event)=>{formik.handleChange(event); selectCat(event) }} value={formik.values.category}>
-            <option value="">Select Category</option>
-            {categories.map(cat => (
-              <option key={cat._id} value={cat._id}>{cat.name}</option>
-            ))}
-          </select>
-          {formik.touched.category && formik.errors.category && <div>{formik.errors.category}</div>}
-        </div>
+<div className='wrapper'>
+  <label>Parent Category</label>
+  <select
+    name="category"
+    onChange={(event) => {
+      const selectedId = event.target.value;
+      const selectedCategory = categories.find(cat => cat._id === selectedId);
 
-      <div className='wrapper'>
-          <label>Parent Sub-Category</label>
-          <select name="subCategory" onChange={formik.handleChange} value={formik.values.subCategory}>
-            <option value="">Select Sub-Category</option>
-            {subCategories.map(cat => (
-              <option key={cat._id} value={cat._id}>{cat.name}</option>
-            ))}
-          </select>
-          {formik.touched.subCategory && formik.errors.subCategory && <div>{formik.errors.subCategory}</div>}
-        </div>
+      // Set full category object in formik
+      formik.setFieldValue("category", {
+        _id: selectedCategory?._id || "",
+        name: selectedCategory?.name || ""
+      });
+
+      // Also trigger your subcategory fetch logic
+      setSelectedCat(selectedId);
+    }}
+    value={formik.values.category._id} // bind to the object's _id
+  >
+    <option value="">Select Category</option>
+    {categories.map(cat => (
+      <option key={cat._id} value={cat._id}>{cat.name}</option>
+    ))}
+  </select>
+
+  {formik.touched.category && formik.errors.category && (
+    <div>{formik.errors.category}</div>
+  )}
+</div>
+
+
+<div className='wrapper'>
+  <label>Parent Sub-Category</label>
+  <select
+    name="subCategory"
+    onChange={(event) => {
+      const selectedId = event.target.value;
+      const selectedSubCategory = subCategories.find(cat => cat._id === selectedId);
+
+      formik.setFieldValue("subCategory", {
+        id: selectedSubCategory?._id || "",
+        name: selectedSubCategory?.name || ""
+      });
+    }}
+    value={formik.values.subCategory.id}
+  >
+    <option value="">Select Sub-Category</option>
+    {subCategories.map(cat => (
+      <option key={cat._id} value={cat._id}>{cat.name}</option>
+    ))}
+  </select>
+
+  {formik.touched.subCategory && formik.errors.subCategory && (
+    <div>{formik.errors.subCategory}</div>
+  )}
+</div>
+
       
       <label>
         Featured:
